@@ -13,54 +13,39 @@
  */
 
 get_header(); ?>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-auto col-sm-auto">
 
-<div class="wrapper" id="wrapper-index">
+					<?php if ( have_posts() ) : ?>
 
-	<div class="container" id="content" tabindex="-1">
+						<?php /* Start the Loop */ ?>
 
-		<div class="row">
+						<?php while ( have_posts() ) : the_post(); ?>
 
-			<main class="site-main" id="main">
+							<?php
 
-				<?php if ( have_posts() ) : ?>
+							/*
+							 * Include the Post-Format-specific template for the content.
+							 * If you want to override this in a child theme, then include a file
+							 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+							 */
+							get_template_part( 'loop-templates/content', get_post_format() );
+							?>
 
-					<?php /* Start the Loop */ ?>
+						<?php endwhile; ?>
 
-					<?php while ( have_posts() ) : the_post(); ?>
+					<?php else : ?>
 
-						<?php
+						<?php get_template_part( 'loop-templates/content', 'none' ); ?>
 
-						/*
-						 * Include the Post-Format-specific template for the content.
-						 * If you want to override this in a child theme, then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'loop-templates/content', get_post_format() );
-						?>
+					<?php endif; ?>
 
-					<?php endwhile; ?>
-
-				<?php else : ?>
-
-					<?php get_template_part( 'loop-templates/content', 'none' ); ?>
-
-				<?php endif; ?>
-
-			</main><!-- #main -->
-
-			<!-- The pagination component -->
-			<?php //understrap_pagination(); ?>
-
-		</div><!-- #primary -->
-
-		<!-- Do the right sidebar check -->
-		<?php get_sidebar(); ?>
-		
-
-	</div><!-- .row -->
-
-</div><!-- Container end -->
-
-</div><!-- Wrapper end -->
-
+		</div>
+		<div class="col-lg-4 col-md-auto col-sm-auto">
+			<?php get_sidebar(); ?>†
+		</div>
+	</div>
+</div>
+			
 <?php get_footer(); ?>

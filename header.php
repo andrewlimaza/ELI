@@ -9,23 +9,24 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 
   <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bare - Start Bootstrap Template</title>
+  <?php if ( is_singular() && pings_open() ) { ?>
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+  <?php } ?>
 
    <?php  wp_head(); ?>
   </head>
 
-  <body>
+ <body <?php body_class(); ?>>
 
   <!-- Navigation -->
   <?php if( has_nav_menu( 'top' ) ) : ?>
     <?php get_template_part( 'template-parts/navigation/navigation-top', 'top' ); ?>
   <?php endif; ?>
+
