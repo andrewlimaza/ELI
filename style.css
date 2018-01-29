@@ -80,4 +80,16 @@ h2.entry-title a:hover{
 .footer-social-icons a:hover{
     text-decoration:none;
 }
-    
+
+.eli-sticky-footer{
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    height: 60px;
+    line-height: 60px;
+}
+
+a{ color:#777; }
+a:hover{ 
+    color:#333;
+    text-decoration:none; }

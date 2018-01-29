@@ -16,7 +16,8 @@
 
 						<?php if ( is_front_page() && is_home() ) : ?>
 
-							<h1 class="navbar-brand mb-0"><a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+						<h1 class="navbar-brand mb-0"><a rel="home" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+	
 							
 						<?php else : ?>
 
@@ -33,7 +34,11 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
       	
-       <?php wp_nav_menu(
+       <?php 
+
+       if( has_nav_menu( 'top' ) ) :
+
+       wp_nav_menu(
 			array(
 				'theme_location'  => 'top',
 				'container_class' => 'collapse navbar-collapse',
@@ -43,8 +48,8 @@
 				'menu_id'         => 'top-menu',
 				'walker'          => new eli_WP_Bootstrap_Navwalker(),
 			)
-		); ?>
-				
+		);
 
+       	endif; ?>
 	</div>
 </nav>

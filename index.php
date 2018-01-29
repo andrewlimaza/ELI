@@ -43,7 +43,7 @@ get_header(); ?>
 
 		</div>
 		<div class="col-lg-4 col-md-auto col-sm-auto">
-			<?php get_sidebar(); ?>†
+			<?php get_sidebar(); ?>
 		</div>
 	</div>
 </div>
