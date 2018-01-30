@@ -33,7 +33,7 @@ if ( post_password_required() ) {
 			$comments_number = get_comments_number();
 			if ( '1' === $comments_number ) {
 				/* translators: %s: post title */
-				printf( _x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'twentyseventeen' ), get_the_title() );
+				printf( _x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'eli' ), get_the_title() );
 			} else {
 				printf(
 					/* translators: 1: number of comments, 2: post title */
@@ -42,7 +42,7 @@ if ( post_password_required() ) {
 						'%1$s Replies to &ldquo;%2$s&rdquo;',
 						$comments_number,
 						'comments title',
-						'twentyseventeen'
+						'eli'
 					),
 					number_format_i18n( $comments_number ),
 					get_the_title()
@@ -57,7 +57,7 @@ if ( post_password_required() ) {
 					'avatar_size' => 100,
 					'style'       => 'ol',
 					'short_ping'  => true,
-					'reply_text'  => __( 'Reply', 'twentyseventeen' ),
+					'reply_text'  => __( 'Reply', 'eli' ),
 				) );
 			?>
 		</ol>
@@ -73,11 +73,29 @@ if ( post_password_required() ) {
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
 
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'twentyseventeen' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'eli' ); ?></p>
 	<?php
 	endif;
 
-	comment_form();
+	$comments_arg = array(
+		'form'	=> array(
+			'class' => 'form-horizontal'
+			),
+		'fields' => apply_filters( 'comment_form_default_fields', array(
+				'autor' 				=> '<div class="form-group">' . '<label for="author">' . __( 'Name', 'eli' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
+										'<input id="author" name="author" class="form-control" type="text" value="" size="30"' . $aria_req . ' />'.
+										'<p id="d1" class="text-danger"></p>' . '</div>',
+				'email'					=> '<div class="form-group">' .'<label for="email">' . __( 'Email', 'eli' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
+										'<input id="email" name="email" class="form-control" type="text" value="" size="30"' . $aria_req . ' />'.
+										'<p id="d2" class="text-danger"></p>' . '</div>',
+				'url'					=> '')),
+				'comment_field'			=> '<div class="form-group">' . '<label for="comment">' . __( 'Comment', 'eli' ) . '</label><span>*</span>' .
+										'<textarea id="comment" class="form-control" name="comment" rows="3" aria-required="true"></textarea><p id="d3" class="text-danger"></p>' . '</div>',
+				'comment_notes_after' 	=> '',
+				'class_submit'			=> 'btn btn-default'
+			);
+
+	comment_form( $comments_arg );
 	?>
 
 </div><!-- #comments -->
