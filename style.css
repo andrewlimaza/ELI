@@ -92,4 +92,14 @@ h2.entry-title a:hover{
 a{ color:#777; }
 a:hover{ 
     color:#333;
-    text-decoration:none; }
+    text-decoration:none; 
+}
+
+
+/**
+ * 
+ * Paid Memberships Pro Styling
+ *
+ */
+
+input.pmpro_error{background:#F2DEDE !important;}

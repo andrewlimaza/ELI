@@ -12,9 +12,9 @@
 
 get_header(); ?>
 
-<div class="wrap">
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-auto col-sm-auto">
 
 			<?php
 			/* Start the Loop */
@@ -40,9 +40,11 @@ get_header(); ?>
 			endwhile; // End of the loop.
 			?>
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
-	<?php get_sidebar(); ?>
-</div><!-- .wrap -->
+	</div>
+		<div class="col-lg-4 col-md-auto col-sm-auto">
+			<?php get_sidebar(); ?>
+		</div>
+	</div>
+</div>
 
 <?php get_footer();
