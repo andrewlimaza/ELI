@@ -1,124 +1,100 @@
 <?php
 /**
- * Understrap Theme Customizer
- *
- * @package understrap
+ * Customizer code goes here.
  */
 
-/**
- * Add postMessage support for site title and description for the Theme Customizer.
- *
- * @param WP_Customize_Manager $wp_customize Theme Customizer object.
- */
-if ( ! function_exists( 'understrap_customize_register' ) ) {
+function eli_customizer_register( $wp_customize ) {
+
+
 	/**
-	 * Register basic customizer support.
 	 *
-	 * @param object $wp_customize Customizer reference.
-	 */
-	function understrap_customize_register( $wp_customize ) {
-		$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
-		$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-		$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
-	}
-}
-add_action( 'customize_register', 'understrap_customize_register' );
-
-if ( ! function_exists( 'understrap_theme_customize_register' ) ) {
-	/**
-	 * Register individual settings through customizer's API.
+	 * START OF FOOTER SECTION
 	 *
-	 * @param WP_Customize_Manager $wp_customize Customizer reference.
 	 */
-	function understrap_theme_customize_register( $wp_customize ) {
+	$wp_customize->add_section( 'eli_footer_copyright', 
+         array(
+            'title'       => __( 'Footer Options', 'mytheme' ), //Visible title of section
+            'priority'    => 35, //Determines what order this appears in
+            'capability'  => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
+         ) 
+      );
 
-		// Theme layout settings.
-		$wp_customize->add_section( 'understrap_theme_layout_options', array(
-			'title'       => __( 'Theme Layout Settings', 'understrap' ),
-			'capability'  => 'edit_theme_options',
-			'description' => __( 'Container width and sidebar defaults', 'understrap' ),
-			'priority'    => 160,
-		) );
+	$wp_customize->add_setting( 'eli_footer_copyright_text', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '&copy; 2018 ' . get_bloginfo('name'), //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );
 
-		 //select sanitization function
-        function understrap_theme_slug_sanitize_select( $input, $setting ){
-         
-            //input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
-            $input = sanitize_key($input);
- 
-            //get the list of possible select options 
-            $choices = $setting->manager->get_control( $setting->id )->choices;
-                             
-            //return input if valid or return default option
-            return ( array_key_exists( $input, $choices ) ? $input : $setting->default );                
-             
-        }
+	$wp_customize->add_setting( 'eli_footer_copyright_facebook', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );
 
-		$wp_customize->add_setting( 'understrap_container_type', array(
-			'default'           => 'container',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'understrap_theme_slug_sanitize_select',
-			'capability'        => 'edit_theme_options',
-		) );
+	$wp_customize->add_setting( 'eli_footer_copyright_twitter', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );
 
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-				$wp_customize,
-				'understrap_container_type', array(
-					'label'       => __( 'Container Width', 'understrap' ),
-					'description' => __( "Choose between Bootstrap's container and container-fluid", 'understrap' ),
-					'section'     => 'understrap_theme_layout_options',
-					'settings'    => 'understrap_container_type',
-					'type'        => 'select',
-					'choices'     => array(
-						'container'       => __( 'Fixed width container', 'understrap' ),
-						'container-fluid' => __( 'Full width container', 'understrap' ),
-					),
-					'priority'    => '10',
-				)
-			) );
+	// Control for text itself.
+   	$wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_footer_copyright_data', //Set a unique ID for the control
+         array(
+            'type'		 => 'text',
+            'label'      => __( 'Copyright Text', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_text', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) );
 
-		$wp_customize->add_setting( 'understrap_sidebar_position', array(
-			'default'           => 'right',
-			'type'              => 'theme_mod',
-			'sanitize_callback' => 'sanitize_text_field',
-			'capability'        => 'edit_theme_options',
-		) );
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_footer_facebook', //Set a unique ID for the control
+         array(
+            'type'		 => 'url',
+            'label'      => __( 'Facebook URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_facebook', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) ); 
 
-		$wp_customize->add_control(
-			new WP_Customize_Control(
-				$wp_customize,
-				'understrap_sidebar_position', array(
-					'label'       => __( 'Sidebar Positioning', 'understrap' ),
-					'description' => __( "Set sidebar's default position. Can either be: right, left, both or none. Note: this can be overridden on individual pages.",
-					'understrap' ),
-					'section'     => 'understrap_theme_layout_options',
-					'settings'    => 'understrap_sidebar_position',
-					'type'        => 'select',
-					'sanitize_callback' => 'understrap_theme_slug_sanitize_select',
-					'choices'     => array(
-						'right' => __( 'Right sidebar', 'understrap' ),
-						'left'  => __( 'Left sidebar', 'understrap' ),
-						'both'  => __( 'Left & Right sidebars', 'understrap' ),
-						'none'  => __( 'No sidebar', 'understrap' ),
-					),
-					'priority'    => '20',
-				)
-			) );
-	}
-} // endif function_exists( 'understrap_theme_customize_register' ).
-add_action( 'customize_register', 'understrap_theme_customize_register' );
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_twitter', //Set a unique ID for the control
+         array(
+            'type'		 => 'url',
+            'label'      => __( 'Twitter URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_twitter', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) ); 
 
-/**
- * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
- */
-if ( ! function_exists( 'understrap_customize_preview_js' ) ) {
-	/**
-	 * Setup JS integration for live previewing.
-	 */
-	function understrap_customize_preview_js() {
-		wp_enqueue_script( 'understrap_customizer', get_template_directory_uri() . '/assets/js/customizer.js',
-			array( 'customize-preview' ), '20130508', true );
-	}
+    /**
+     * END OF FOOTER SECTION
+     */      
+
 }
-add_action( 'customize_preview_init', 'understrap_customize_preview_js' );
+add_action( 'customize_register', 'eli_customizer_register' );
+
+// $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
+// 	'label'      => __( 'Header Color', 'mytheme' ),
+// 	'section'    => 'colors',
+// 	'settings'   => 'header_color',
+// ) ) );
+
+// $wp_customize->add_setting( 'header_color' , array(
+//     'default'     => '#000000',
+//     'transport'   => 'refresh',
+// ) );
