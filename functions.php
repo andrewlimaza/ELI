@@ -174,3 +174,82 @@ function eli_get_entry_meta(){
 	</div>
 	<?php
 }
+
+
+/**
+ * Page Settings
+ */
+
+function eli_add_page_settings( $post ) {
+    add_meta_box( 
+        'my-meta-box',
+        __( 'ELI Page Settings', 'eli' ),
+        'eli_page_metabox',
+        'page',
+        'normal',
+        'default'
+    );
+}
+add_action( 'add_meta_boxes_page', 'eli_add_page_settings' );
+
+// Call back for eli_add_page_settings
+function eli_page_metabox( $post ) {
+
+	wp_nonce_field( 'eli_page_settings', 'eli_page_settings_nonce' );
+
+	$hide_page_navbar = get_post_meta( $post->ID, 'eli_hide_page_navbar', true );
+	$hide_page_title = get_post_meta( $post->ID, 'eli_hide_page_title', true );
+	$hide_page_footer = get_post_meta( $post->ID, 'eli_hide_page_footer', true );
+
+
+	?>
+		
+		<label for="eli_hide_page_navbar"><?php _e( 'Hide Page Navigation:', 'eli' ); ?></label>
+		<input type="checkbox" class="form-check-input" id="eli_hide_page_navbar" name="eli_hide_page_navbar" value="1" <?php checked( $hide_page_title, "1" ); ?>/>
+		<label for="eli_hide_page_title"><?php _e( 'Hide Page Title:', 'eli' ); ?></label>
+		<input type="checkbox" id="eli_hide_page_title" name="eli_hide_page_title" value="1" <?php checked( $hide_page_title, "1" ); ?>/>
+		<label for="eli_hide_page_footer"><?php _e( 'Hide Page Footer:', 'eli' ); ?></label>
+		<input type="checkbox" id="eli_hide_page_footer" name="eli_hide_page_footer" value="1" <?php checked( $hide_page_footer, "1" ); ?>/>
+	<?php
+
+}
+
+function eli_save_page_meta( $post_id ) {
+
+	// Check if the user can edit a page.
+    if ( 'page' == $_POST['post_type'] ) {
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return $post_id;
+        }
+    }
+
+	// Check if nonce is set.
+	if( ! isset( $_POST['eli_page_settings_nonce'] ) ) {
+		return $post_id;
+	}
+
+	$nonce = $_POST['eli_page_settings_nonce'];
+
+	// Verify the nonce that is valid
+	if( ! wp_verify_nonce( $nonce, 'eli_page_settings' ) ) {
+		return $post_id;
+	}
+
+	// Ignore if autosave is happening.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+       return $post_id;
+    }
+
+    //Sanitize the data
+    $hide_page_navbar = (int) $_POST['eli_hide_page_navbar'];
+    $hide_page_title = (int) $_POST['eli_hide_page_title'];
+    $hide_page_footer = (int) $_POST['eli_hide_page_footer'];
+
+    // Let's save all the data now.
+    update_post_meta( $post_id, 'eli_hide_page_navbar', $hide_page_navbar );
+    update_post_meta( $post_id, 'eli_hide_page_title', $hide_page_title );
+    update_post_meta( $post_id, 'eli_hide_page_footer', $hide_page_footer );
+}
+add_action( 'save_post', 'eli_save_page_meta' );
+
+

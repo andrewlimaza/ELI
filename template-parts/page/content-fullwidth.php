@@ -18,7 +18,6 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 	<?php } ?>
-	<div class="col">
 		<?php
 			the_content();
 
@@ -27,5 +26,4 @@
 				'after'  => '</div>',
 			) );
 		?>
-	</div><!-- .entry-content -->
 </article><!-- #post-## -->

@@ -41,5 +41,4 @@
 	</footer><!-- .entry-footer -->
 
 </article><!-- #post-## -->
-
-<hr>
+<hr />

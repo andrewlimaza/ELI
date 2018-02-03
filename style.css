@@ -63,30 +63,16 @@ h2.entry-title a:hover{
     text-decoration:none;
 }
 
-/** Header **/
-.navbar {
-    margin-bottom: 5%;
-}
+/** Custom Stlying For Eli Theme **/
+.eli-content-container{margin-top:3%;}
 
 /** Footer **/
-.footer {
-    padding: 1%;
-}
-
 .footer-social-icons .fa-circle{
     color: black;
 }
 
 .footer-social-icons a:hover{
     text-decoration:none;
-}
-
-.eli-sticky-footer{
-    position: absolute;
-    bottom: 0;
-    width: 90%;
-    height: 60px;
-    line-height: 60px;
 }
 
 a{ color:#777; }

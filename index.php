@@ -13,7 +13,7 @@
  */
 
 get_header(); ?>
-<div class="container">
+<div class="container eli-content-container">
 	<div class="row">
 		<div class="col-lg-8 col-md-auto col-sm-auto">
 

@@ -25,6 +25,15 @@
 
  <body <?php body_class(); ?>>
 
-  <!-- Navigation -->
-  <?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>
- 
+<!-- Navigation -->
+<?php 
+  if( !is_page() ){
+    get_template_part( 'template-parts/navigation/navigation', 'top' );
+  }else{
+  //assume single page and get content
+  $hide_navbar = get_post_meta( $post->ID, 'eli_hide_page_navbar', true );
+
+  if( '1' != $hide_navbar ) {
+    get_template_part( 'template-parts/navigation/navigation', 'top' );
+  }
+}
