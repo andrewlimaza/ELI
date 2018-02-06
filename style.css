@@ -64,7 +64,7 @@ h2.entry-title a:hover{
 }
 
 /** Custom Stlying For Eli Theme **/
-.eli-content-container{margin-top:3%;}
+.eli-content-container{ margin-top:3%; }
 
 /** Footer **/
 .footer-social-icons .fa-circle{
@@ -80,7 +80,8 @@ a:hover{
     color:#333;
     text-decoration:none; 
 }
-
+/* Sticky Header Navigation Top */
+.sticky-top{ background:rgba( 255, 255, 255, 0.7 ); }
 
 /**
  * 
@@ -88,7 +89,7 @@ a:hover{
  *
  */
 
-input.pmpro_error{background:#F2DEDE !important;}
+input.pmpro_error{ background:#F2DEDE !important; }
 
 /**
  * WooCommerce Styling
@@ -99,3 +100,8 @@ input.pmpro_error{background:#F2DEDE !important;}
 .col-1, .col-2{
   max-width:100%;
 }
+
+    .container {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }

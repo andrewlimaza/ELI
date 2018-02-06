@@ -15,7 +15,7 @@
 get_header(); ?>
 <div class="container eli-content-container">
 	<div class="row">
-		<div class="col-lg-8 col-md-auto col-sm-auto">
+		<div class="col-lg-8 col-md-12 col-sm-12">
 
 					<?php if ( have_posts() ) : ?>
 
@@ -42,7 +42,7 @@ get_header(); ?>
 					<?php endif; ?>
 
 		</div>
-		<div class="col-lg-4 col-md-auto col-sm-auto">
+		<div class="col-lg-4 col-md-12 col-sm-12">
 			<?php get_sidebar(); ?>
 		</div>
 	</div>

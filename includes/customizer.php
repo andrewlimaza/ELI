@@ -14,7 +14,7 @@ function eli_customizer_register( $wp_customize ) {
 	$wp_customize->add_section( 'eli_footer_copyright', 
          array(
             'title'       => __( 'Footer Options', 'mytheme' ), //Visible title of section
-            'priority'    => 35, //Determines what order this appears in
+            'priority'    => 31, //Determines what order this appears in
             'capability'  => 'edit_theme_options', //Capability needed to tweak
             'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
          ) 
@@ -83,7 +83,38 @@ function eli_customizer_register( $wp_customize ) {
 
     /**
      * END OF FOOTER SECTION
-     */      
+     */    
+
+    $wp_customize->add_section( 'eli_header_settings', 
+         array(
+            'title'       => __( 'Header Settings', 'mytheme' ), //Visible title of section
+            'priority'    => 30, //Determines what order this appears in
+            'capability'  => 'edit_theme_options', //Capability needed to tweak
+            'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
+         ) 
+      );
+
+    $wp_customize->add_setting( 'eli_sticky_header', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => false, //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+      );
+
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_twitter', //Set a unique ID for the control
+         array(
+            'type'       => 'checkbox',
+            'label'      => __( 'Sticky Header', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_sticky_header', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_header_settings',
+         ) 
+    ) ); 
+
+  
 
 }
 add_action( 'customize_register', 'eli_customizer_register' );

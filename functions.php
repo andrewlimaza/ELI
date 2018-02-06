@@ -253,4 +253,17 @@ function eli_save_page_meta( $post_id ) {
 }
 add_action( 'save_post', 'eli_save_page_meta' );
 
+function eli_css_for_sticky_header_admin() {
 
+	if( get_theme_mod( 'eli_sticky_header' ) && is_admin_bar_showing() ) {
+	?>
+	<style type="text/css">
+		@media all and ( min-width: 800px ) {
+			.sticky-top{ top:28px; }
+		}
+	</style>
+	<?php
+	}
+
+}
+add_action( 'wp_footer', 'eli_css_for_sticky_header_admin' );

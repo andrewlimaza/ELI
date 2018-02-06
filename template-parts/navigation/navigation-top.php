@@ -9,7 +9,8 @@
  */
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light <?php echo ( get_theme_mod( 'eli_sticky_header' ) == 1 ? 'sticky-top' : '' ); ?>">
+
 	<div class="container">
 
 		<?php if ( ! has_custom_logo() ) { ?>
