@@ -101,7 +101,9 @@ input.pmpro_error{ background:#F2DEDE !important; }
   max-width:100%;
 }
 
-    .container {
-        max-width: 100% !important;
-        overflow-x: hidden !important;
-    }
+/** WIDGET CODE **/
+.widget-area ul{
+    list-style-type:none;
+    margin-left:0;
+    padding-left:0;
+}

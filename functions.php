@@ -267,3 +267,20 @@ function eli_css_for_sticky_header_admin() {
 
 }
 add_action( 'wp_footer', 'eli_css_for_sticky_header_admin' );
+
+if( class_exists( 'WooCommerce' ) ) {
+
+	function eli_woo_checkout_bootstrap_classes( $fields ) {
+	    foreach ( $fields as &$fieldset ) {
+	        foreach ( $fieldset as &$field ) {
+	            // if you want to add the form-group class around the label and the input
+	            $field['class'][] = 'form-group'; 
+
+	            // add form-control to the actual input
+	            $field['input_class'][] = 'form-control';
+	        }
+	    }
+	    return $fields;
+	}
+	add_filter( 'woocommerce_checkout_fields', 'eli_woo_checkout_bootstrap_classes' );
+}
