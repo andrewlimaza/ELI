@@ -107,3 +107,67 @@ input.pmpro_error{ background:#F2DEDE !important; }
     margin-left:0;
     padding-left:0;
 }
+
+#eli-view-account{ float:right; }
+
+@media all and (max-width: 700px) {
+    #eli-view-account{
+        float:none;
+        display:block;
+    }
+    #eli-view-orders, #eli-view-account { display:block; }
+}
+
+/* Change WC Acct Page Column Widths */
+@media only screen and (min-width: 769px) {
+  .woocommerce-account .woocommerce-MyAccount-navigation {
+    width: 22%;
+  }
+  .woocommerce-account .woocommerce-MyAccount-content { 
+    width: 75%;
+  }
+}
+/* Style WC Account Endpoint Links */
+nav.woocommerce-MyAccount-navigation ul {
+  list-style-type: none;
+  padding-left: 0;
+  max-width:200px;
+  font-size: 17px;
+  line-height: 26px;
+}
+nav.woocommerce-MyAccount-navigation ul li {
+  padding: 8px 20px;
+  background-color: rgba(0,0,0,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+nav.woocommerce-MyAccount-navigation ul li.is-active {
+  background-color: rgba(0,0,0,0.1);
+}
+nav.woocommerce-MyAccount-navigation ul li.is-active a {
+  color: rgba(0,0,0,0.8); cursor: default;
+}
+nav.woocommerce-MyAccount-navigation ul li.is-active:after {
+  content: "";
+  height: 0;
+  width: 0;
+  border-top: 20px solid transparent;
+  border-left: 14px solid rgba(0,0,0,0.1);
+  border-bottom: 20px solid transparent;
+  float: right;
+  margin-right: -34px;
+  margin-top: -7px;
+}
+nav.woocommerce-MyAccount-navigation ul li:not(.is-active):hover {
+  background-color: rgba(0,0,0,0.07);
+}
+nav.woocommerce-MyAccount-navigation ul li:not(.is-active):hover:after { 
+  content: "";
+  height: 0;
+  width: 0;
+  border-top: 20px solid transparent;
+  border-left: 14px solid rgba(0,0,0,0.07);
+  border-bottom: 20px solid transparent;
+  float: right;
+  margin-right: -34px;
+  margin-top: -7px;
+}
