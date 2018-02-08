@@ -270,14 +270,6 @@ add_action( 'wp_footer', 'eli_css_for_sticky_header_admin' );
 
 if( class_exists( 'WooCommerce' ) ) {
 
-	function eli_add_class_to_fields( $args, $key, $value ) {
-		$args['input_class'] = 'form-control';
-		$args['class'] = 'form-group';
-
-		return $args;
-	}
-	add_filter( 'woocommerce_form_field_args',  'eli_add_class_to_fields', 10, 3 );
-
 	function eli_additional_links_for_woo_confirmation() {
 		echo '<a href="' . home_url( 'my-account/orders' ) . '" id="eli-view-orders">'. __( '&larr; View Order History', 'eli' ) . '</a>';
 		echo '<a href="' . home_url( 'my-account' ) . '" id="eli-view-account">' . __( 'View My Account &rarr;', 'eli' ) . '</a>';
