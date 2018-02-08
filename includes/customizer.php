@@ -18,7 +18,7 @@ function eli_customizer_register( $wp_customize ) {
             'capability'  => 'edit_theme_options', //Capability needed to tweak
             'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
          ) 
-      );
+    );
 
 	$wp_customize->add_setting( 'eli_footer_copyright_text', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
          array(
@@ -27,7 +27,7 @@ function eli_customizer_register( $wp_customize ) {
             'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
             'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
          ) 
-      );
+    );
 
 	$wp_customize->add_setting( 'eli_footer_copyright_facebook', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
          array(
@@ -36,9 +36,64 @@ function eli_customizer_register( $wp_customize ) {
             'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
             'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
          ) 
-      );
+    );
 
-	$wp_customize->add_setting( 'eli_footer_copyright_twitter', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+
+    $wp_customize->add_setting( 'eli_footer_copyright_twitter', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_copyright_instagram', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_copyright_google_plus', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_copyright_linked_in', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_copyright_dribbble', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_copyright_github', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_copyright_email', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
          array(
             'default'    => '', //Default setting/value to save
             'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
@@ -61,7 +116,7 @@ function eli_customizer_register( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
          $wp_customize, //Pass the $wp_customize object (required)
-         'eli_footer_facebook', //Set a unique ID for the control
+         'eli_facebook', //Set a unique ID for the control
          array(
             'type'		 => 'url',
             'label'      => __( 'Facebook URL', 'mytheme' ), //Admin-visible name of the control
@@ -74,13 +129,80 @@ function eli_customizer_register( $wp_customize ) {
          $wp_customize, //Pass the $wp_customize object (required)
          'eli_twitter', //Set a unique ID for the control
          array(
-            'type'		 => 'url',
+            'type'       => 'url',
             'label'      => __( 'Twitter URL', 'mytheme' ), //Admin-visible name of the control
             'settings'   => 'eli_footer_copyright_twitter', //Which setting to load and manipulate (serialized is okay)
             'section'    => 'eli_footer_copyright',
          ) 
+    ) );
+
+
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_instagram', //Set a unique ID for the control
+         array(
+            'type'       => 'url',
+            'label'      => __( 'Instagram URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_instagram', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) );  
+
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_google_plus', //Set a unique ID for the control
+         array(
+            'type'       => 'url',
+            'label'      => __( 'Google Plus URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_google_plus', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_linked_in', //Set a unique ID for the control
+         array(
+            'type'       => 'url',
+            'label'      => __( 'Linkedin URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_linked_in', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
     ) ); 
 
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_dribbble', //Set a unique ID for the control
+         array(
+            'type'       => 'url',
+            'label'      => __( 'Dribbble URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_dribbble', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_github', //Set a unique ID for the control
+         array(
+            'type'       => 'url',
+            'label'      => __( 'GitHub URL', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_github', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) ); 
+
+    $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_email', //Set a unique ID for the control
+         array(
+            'type'       => 'text',
+            'label'      => __( 'Contact Email', 'mytheme' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_copyright_email', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_footer_copyright',
+         ) 
+    ) );
+ 
     /**
      * END OF FOOTER SECTION
      */    
@@ -105,7 +227,7 @@ function eli_customizer_register( $wp_customize ) {
 
     $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
          $wp_customize, //Pass the $wp_customize object (required)
-         'eli_twitter', //Set a unique ID for the control
+         'eli_sticky_header', //Set a unique ID for the control
          array(
             'type'       => 'checkbox',
             'label'      => __( 'Sticky Header', 'mytheme' ), //Admin-visible name of the control

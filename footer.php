@@ -9,7 +9,6 @@
 ?>
 
 </body>
-
 <?php 
 ?>
 <footer class="footer">

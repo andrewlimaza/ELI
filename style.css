@@ -255,6 +255,18 @@ table thead th {
 table tbody + tbody {
   border-top: 2px solid #dee2e6;
 }
+
+
+/**
+ * Footer Styling
+ */
+ .eli-footer-social-icons i { padding:20px; }
+
+.footer ul{
+  list-style-type:none;
+  margin-left:0;
+  padding:0;
+}
 /**
  * PMPro Styling
  */
@@ -263,6 +275,4 @@ table tbody + tbody {
     max-width:100px;
 }
 
-#ExpirationYear{
-    margin-left:10px;
-}
+#ExpirationYear{ margin-left:10px; }
