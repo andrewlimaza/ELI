@@ -175,7 +175,7 @@ nav.woocommerce-MyAccount-navigation ul li:not(.is-active):hover:after {
 /**
  * INPUT FORM STYLING
  */
- input {
+ input, select {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
@@ -189,15 +189,55 @@ nav.woocommerce-MyAccount-navigation ul li:not(.is-active):hover:after {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-input::-ms-expand {
+input::-ms-expand, select::-ms-expand {
   background-color: transparent;
   border: 0;
 }
 
-input:focus {
+input:focus, select:focus {
   color: #495057;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input[type='submit']{
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type='submit']:focus, input[type='submit']:hover {
+  text-decoration: none;
+  background-color: #ccc;
+}
+
+input[type='submit']:focus, input[type='submit'].focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/**
+ * PMPro Styling
+ */
+ #ExpirationMonth, #ExpirationYear{
+    display:inline;
+    max-width:100px;
+}
+
+#ExpirationYear{
+    margin-left:10px;
 }
