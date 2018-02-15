@@ -276,3 +276,5 @@ table tbody + tbody {
 }
 
 #ExpirationYear{ margin-left:10px; }
+
+.hidden{ display:none; }
