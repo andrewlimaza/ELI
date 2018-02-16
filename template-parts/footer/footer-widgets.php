@@ -37,36 +37,27 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
       			<div class="eli-footer-social-icons">
 	      			<?php
 
-	      			$show_facebook = ( !get_theme_mod( 'eli_footer_copyright_facebook' ) ) ? 'hidden' : '';
-	      			echo '<a id="eli-footer-copyright-facebook" href="'. esc_url( get_theme_mod( 'eli_footer_copyright_facebook' ) ).'" target="_blank" rel="noopener" class="' . $show . '"><i class="fa fa-facebook"></i></a> ';
-	      			
-	      			if( get_theme_mod( 'eli_footer_copyright_twitter' ) ) {
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_twitter' ) ).'" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>';
+	      			//make this global somewhere.
+	      			$eli_footer_social_elements = array(
+				        'facebook' => 'facebook',
+				        'twitter' => 'twitter',
+				        'instagram' => 'instagram',
+				        'google_plus' => 'google-plus',     
+				        'linkedin' => 'linkedin',
+				        'dribbble' => 'dribbble',
+				        'github' => 'github',
+				        'email' => 'envelope',
+				    );
+
+
+	      			// loop through customizer settings and display these fields.
+	      			foreach( $eli_footer_social_elements as $setting_name => $fa ){
+
+	      				$show_social_element = ( !get_theme_mod( "eli_footer_copyright_$setting_name" ) ) ? 'hidden' : '';
+
+	      				echo '<a id="eli-footer-copyright-' . $setting_name . '" href="'. esc_url( get_theme_mod( 'eli_footer_copyright_$setting_name' ) ).'" target="_blank" rel="noopener" class="' . $show_social_element . '"><i class="fa fa-'.$fa.'"></i></a> ';
 	      			}
-
-	      			if( get_theme_mod( 'eli_footer_copyright_instagram' ) ) { 
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_instagram' ) ).'" target="_blank" rel="noopener"><i class="fa fa-instagram"></i></a> ';
-	      			} 
-
-	      			if( get_theme_mod( 'eli_footer_copyright_google_plus' ) ) { 
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_google_plus' ) ).'" target="_blank" rel="noopener"><i class="fa fa-google-plus"></i></a> ';
-	      			} 
-
-	      			if( get_theme_mod( 'eli_footer_copyright_linked_in' ) ) { 
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_linked_in' ) ).'" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a> ';
-	      			} 
-
-	      			if( get_theme_mod( 'eli_footer_copyright_dribbble' ) ) { 
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_dribbble' ) ).'" target="_blank" rel="noopener"><i class="fa fa-dribbble"></i></a> ';
-	      			}
-
-	      			if( get_theme_mod( 'eli_footer_copyright_github' ) ) { 
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_github' ) ).'" target="_blank" rel="noopener"><i class="fa fa-github-alt"></i></a> ';
-	      			} 
-
-	      			if( get_theme_mod( 'eli_footer_copyright_email' ) ) { 
-	      				echo '<a href="'. esc_url( get_theme_mod( 'eli_footer_copyright_email' ) ).'" target="_blank" rel="noopener"><i class="fa fa-envelope"></i></a> ';
-	      			}  
+ 
 	      			?>
 	      		</div>
         		<p><small><?php echo get_theme_mod( 'eli_footer_copyright_text' ); ?></small></p>

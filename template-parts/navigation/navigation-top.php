@@ -9,7 +9,7 @@
  */
 
 ?>
-<nav class="navbar navbar-expand-lg navbar-light navbar-custom <?php echo ( get_theme_mod( 'eli_sticky_header' ) == 1 ? 'sticky-top' : '' ); ?>">
+<nav id="eli-top-navbar" class="navbar navbar-expand-lg navbar-light navbar-custom <?php echo ( get_theme_mod( 'eli_sticky_header' ) == 1 ? 'sticky-top' : '' ); ?>">
 
 	<div class="container">
 

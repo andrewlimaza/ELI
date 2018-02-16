@@ -277,11 +277,12 @@ if( class_exists( 'WooCommerce' ) ) {
 	add_action( 'woocommerce_order_details_after_order_table', 'eli_additional_links_for_woo_confirmation' );
 }
 
+/**
+ * @todo We should localize the $eli_footer_social_elements global so if that array changes it will allow developers ease of use yo! Also refer to customizer.php to improve it!
+ */
 function eli_customizer_preview() {
-wp_register_script('eli-customizer', get_template_directory_uri() . '/assets/js/customizer.js',	array(  'jquery', 'customize-preview' ),'20180215',	true );
-		// Localize the script with new data
-		// wp_localize_script( 'eli-customizer', 'memberlite_defaults', $memberlite_defaults );
-		wp_enqueue_script('eli-customizer');
+	wp_register_script('eli-customizer', get_template_directory_uri() . '/assets/js/customizer.js',	array(  'jquery', 'customize-preview' ),'20180215',	true );
+	wp_enqueue_script('eli-customizer');
 }
 
 add_action( 'customize_preview_init' , 'eli_customizer_preview' );

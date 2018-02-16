@@ -4,7 +4,19 @@
  */
 
 function eli_customizer_register( $wp_customize ) {
-
+    // add in a filter for this! 
+    // associative array for setting ID and FontAwesome Icon.
+    // make this global somewhere?
+    $eli_footer_social_elements = array(
+        'facebook' => 'facebook',
+        'twitter' => 'twitter',
+        'instagram' => 'instagram',
+        'google_plus' => 'google-plus',     
+        'linkedin' => 'linkedin',
+        'dribbble' => 'dribbble',
+        'github' => 'github',
+        'email' => 'envelope',
+    );
 
 	/**
 	 *
@@ -29,78 +41,19 @@ function eli_customizer_register( $wp_customize ) {
          ) 
     );
 
-	$wp_customize->add_setting( 'eli_footer_copyright_facebook', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
+    // Let's be smart about this.
+    foreach( $eli_footer_social_elements as $setting => $fa ) {
+
+            $wp_customize->add_setting( 'eli_footer_copyright_'.$setting, //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+            array(
+                'default'    => '', //Default setting/value to save
+                'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+                'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+                'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+            ) 
     );
 
-
-    $wp_customize->add_setting( 'eli_footer_copyright_twitter', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-    );
-
-    $wp_customize->add_setting( 'eli_footer_copyright_instagram', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-    );
-
-    $wp_customize->add_setting( 'eli_footer_copyright_google_plus', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-    );
-
-    $wp_customize->add_setting( 'eli_footer_copyright_linked_in', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-    );
-
-    $wp_customize->add_setting( 'eli_footer_copyright_dribbble', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-    );
-
-    $wp_customize->add_setting( 'eli_footer_copyright_github', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-    );
-
-    $wp_customize->add_setting( 'eli_footer_copyright_email', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
-         array(
-            'default'    => '', //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
-         ) 
-      );
+    }
 
 	// Control for text itself.
    	$wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
@@ -165,7 +118,7 @@ function eli_customizer_register( $wp_customize ) {
          array(
             'type'       => 'url',
             'label'      => __( 'Linkedin URL', 'mytheme' ), //Admin-visible name of the control
-            'settings'   => 'eli_footer_copyright_linked_in', //Which setting to load and manipulate (serialized is okay)
+            'settings'   => 'eli_footer_copyright_linkedin', //Which setting to load and manipulate (serialized is okay)
             'section'    => 'eli_footer_copyright',
          ) 
     ) ); 
@@ -236,18 +189,5 @@ function eli_customizer_register( $wp_customize ) {
          ) 
     ) ); 
 
-  
-
 }
 add_action( 'customize_register', 'eli_customizer_register' );
-
-// $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
-// 	'label'      => __( 'Header Color', 'mytheme' ),
-// 	'section'    => 'colors',
-// 	'settings'   => 'header_color',
-// ) ) );
-
-// $wp_customize->add_setting( 'header_color' , array(
-//     'default'     => '#000000',
-//     'transport'   => 'refresh',
-// ) );
