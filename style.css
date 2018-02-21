@@ -38,6 +38,12 @@ The dependencies can be found in /src/ after running "gulp copy-assets" terminal
 /** Fix overflow issue **/
 body { overflow-x: hidden; }
 
+h1.entry-title{
+  margin-bottom:5%;
+  margin-top:1%;
+
+}
+
 /** Link Colors Etc. **/
 h2.entry-title a{
 	font-family: 'Open Sans', Arial;
