@@ -9,6 +9,12 @@
  */
 
 ?>
+<!-- <div class="container-fluid" id="eli-top-navbar-small" style="background:red; color:white; padding:3px;">
+	<div class="row">
+		<div class="col text-center">test</div>
+		<div class="col text-center">Test 2</div>
+	</div>
+</div> -->
 <nav id="eli-top-navbar" class="navbar navbar-expand-lg navbar-light navbar-custom <?php echo ( get_theme_mod( 'eli_sticky_header' ) == 1 ? 'sticky-top' : '' ); ?>">
 
 	<div class="container">
@@ -47,7 +53,7 @@
 				'menu_class'      => 'navbar-nav ml-auto',
 				'fallback_cb'     => '',
 				'menu_id'         => 'top-menu',
-				'walker'          => new eli_WP_Bootstrap_Navwalker(),
+				'walker'          => new Eli_WP_Bootstrap_Navwalker(),
 			)
 		);
 

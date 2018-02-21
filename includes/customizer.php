@@ -1,34 +1,41 @@
 <?php
 /**
  * Customizer code goes here.
+ *
+ * @package eli
  */
 
+/**
+ * This registers kak.
+ *
+ * @param object $wp_customize The customize object.
+ */
 function eli_customizer_register( $wp_customize ) {
-    // add in a filter for this! 
+    // add in a filter for this!
     // associative array for setting ID and FontAwesome Icon.
     // make this global somewhere?
     $eli_footer_social_elements = array(
         'facebook' => 'facebook',
         'twitter' => 'twitter',
         'instagram' => 'instagram',
-        'google_plus' => 'google-plus',     
+        'google_plus' => 'google-plus',
         'linkedin' => 'linkedin',
         'dribbble' => 'dribbble',
         'github' => 'github',
         'email' => 'envelope',
     );
 
-	/**
-	 *
-	 * START OF FOOTER SECTION
-	 *
-	 */
-	$wp_customize->add_section( 'eli_footer_copyright', 
+    /**
+     *
+     * START OF FOOTER SECTION
+     *
+     */
+    $wp_customize->add_section( 'eli_footer_copyright',
          array(
             'title'       => __( 'Footer Options', 'mytheme' ), //Visible title of section
             'priority'    => 31, //Determines what order this appears in
             'capability'  => 'edit_theme_options', //Capability needed to tweak
-            'description' => __('Allows you to customize some example settings for MyTheme.', 'mytheme'), //Descriptive tooltip
+            'description' => __( 'Allows you to customize some example settings for MyTheme.' , 'mytheme' ), //Descriptive tooltip
          ) 
     );
 
@@ -56,7 +63,7 @@ function eli_customizer_register( $wp_customize ) {
     }
 
 	// Control for text itself.
-   	$wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
+   	$wp_customize->add_control( new WP_Customize_Control ( //Instantiate the color control class
          $wp_customize, //Pass the $wp_customize object (required)
          'eli_footer_copyright_data', //Set a unique ID for the control
          array(
@@ -127,8 +134,8 @@ function eli_customizer_register( $wp_customize ) {
          $wp_customize, //Pass the $wp_customize object (required)
          'eli_dribbble', //Set a unique ID for the control
          array(
-            'type'       => 'url',
-            'label'      => __( 'Dribbble URL', 'mytheme' ), //Admin-visible name of the control
+            'type'  => 'url',
+            'label' => __( 'Dribbble URL', 'mytheme' ), //Admin-visible name of the control
             'settings'   => 'eli_footer_copyright_dribbble', //Which setting to load and manipulate (serialized is okay)
             'section'    => 'eli_footer_copyright',
          ) 
