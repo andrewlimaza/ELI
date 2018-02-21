@@ -290,9 +290,9 @@ table tbody + tbody {
 
 #ExpirationYear{ margin-left:10px; }
 
-.hidden{ display:none; }
-
 /**
  * PMPRO STYLING
  */
  .pmpro_btn-submit-checkout{ max-width:175px; }
+.hidden{ display:none; }
+
