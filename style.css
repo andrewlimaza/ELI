@@ -78,6 +78,13 @@ h2.entry-title a:hover{
     text-decoration:none;
 }
 
+#footer-menu li{
+  display:inline-block;
+  font-size:10px;
+}
+
+#footer-menu li.active a{ color:rgba( 0,0,0,0.9); }
+
 a{ color:#777; }
 a:hover{ 
     color:#333;

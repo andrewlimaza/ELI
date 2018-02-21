@@ -60,6 +60,26 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
  
 	      			?>
 	      		</div>
+
+	      		<div class="container" id="footer-menu-container">
+	      		<?php 
+		      		if( has_nav_menu( 'footer' ) ) :
+
+		       			wp_nav_menu(
+							array(
+								'theme_location'  => 'footer',
+								'container_class' => '',
+								'container_id'    => '',
+								'menu_class'      => 'list-inline',
+								'fallback_cb'     => '',
+								'menu_id'         => 'footer-menu',
+								'walker'          => new Eli_WP_Bootstrap_Navwalker(),
+							)
+						);
+
+	       			endif;
+	      		?>
+	      	</div>
         		<p><small><?php echo get_theme_mod( 'eli_footer_copyright_text' ); ?></small></p>
      		</div>
     	</div>

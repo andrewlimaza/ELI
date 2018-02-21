@@ -15,8 +15,8 @@ require get_template_directory() . '/includes/customizer.php';
 function eli_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'top'    => __( 'Top Menu', 'twentyseventeen' ),
-		'social' => __( 'Social Links Menu', 'twentyseventeen' ),
+		'top'    => __( 'Top Menu', 'eli' ),
+		'footer' => __( 'Footer Menu', 'eli' ),
 	) );
 
 
@@ -105,25 +105,6 @@ function eli_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'eli_widgets_init' );
-
-/**
- * Add Custom classes to menu.
- */
-
-function eli_nav_menu_css( $classes, $item, $args ) {
- 	
- 	if( 'top' === $args->theme_location ) {
- 		$classes[] = 'nav-item';
-
- 		if( in_array( 'current-menu-item', $classes ) ) {
- 			$classes[] = 'active';
- 		}
- 	}
-    
-    return $classes;
-}
-add_filter( 'nav_menu_css_class' , 'eli_nav_menu_css' , 10, 3 );
-
 
 if ( ! function_exists( 'eli_entry_footer' ) ) :
 /**
