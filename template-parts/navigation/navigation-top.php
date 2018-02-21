@@ -36,7 +36,6 @@
 				</button>
       	
        <?php 
-
        if( has_nav_menu( 'top' ) ) :
 
        wp_nav_menu(
@@ -47,7 +46,7 @@
 				'menu_class'      => 'navbar-nav ml-auto',
 				'fallback_cb'     => '',
 				'menu_id'         => 'top-menu',
-				'walker'          => new eli_WP_Bootstrap_Navwalker(),
+				'walker'          => new Eli_WP_Bootstrap_Navwalker(),
 			)
 		);
 

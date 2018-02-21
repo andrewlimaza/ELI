@@ -8,6 +8,17 @@
 
 ( function( $ ) {
 
+	
+
+
+	wp.customize( 'eli_footer_copyright_text', function( value ) {
+
+		value.bind( function( to ) {
+			$( '#eli-copyright-text' ).html( to );
+		} );
+
+	} );
+
 	wp.customize( 'eli_sticky_header', function( value ) {
 
 	value.bind( function( to ) {
@@ -23,7 +34,22 @@
 	} );
 
 
-	wp.customize( 'eli_footer_copyright_facebook', function( value ) {
+	wp.customize( 'eli_show_social_media_footer', function( value ) {
+
+	value.bind( function( to ) {
+
+		if ( ! to ) {
+			$( '#eli-footer-social-icons' ).addClass( 'hidden' );
+		} else {
+			$( '#eli-footer-social-icons' ).removeClass( 'hidden' );
+		}
+
+	} );
+
+	} );
+
+
+	wp.customize( 'eli_social_facebook', function( value ) {
 	
 	value.bind( function( to ) {
 
@@ -38,7 +64,7 @@
 	} );
 
 
-	wp.customize( 'eli_footer_copyright_twitter', function( value ) {
+	wp.customize( 'eli_social_twitter', function( value ) {
 	
 	value.bind( function( to ) {
 
@@ -52,7 +78,7 @@
 	
  	} );
 
- 	wp.customize( 'eli_footer_copyright_instagram', function( value ) {
+ 	wp.customize( 'eli_social_instagram', function( value ) {
 	
 	value.bind( function( to ) {
 
@@ -66,21 +92,21 @@
 	
  	} );
 
- 	wp.customize( 'eli_footer_copyright_google_plus', function( value ) {
+ 	wp.customize( 'eli_social_google_plus', function( value ) {
 	
 	value.bind( function( to ) {
 
 		if ( to ) {
-			$( '#eli-footer-copyright-google-plus' ).removeClass( 'hidden' );
+			$( '#eli-footer-copyright-google_plus' ).removeClass( 'hidden' );
 		} else {
-			$( '#eli-footer-copyright-google-plus' ).addClass( 'hidden' );
+			$( '#eli-footer-copyright-google_plus' ).addClass( 'hidden' );
 		}
 
 	} );
 	
  	} );
 
- 	wp.customize( 'eli_footer_copyright_linkedin', function( value ) {
+ 	wp.customize( 'eli_social_linkedin', function( value ) {
 	
 	value.bind( function( to ) {
 
@@ -94,7 +120,7 @@
 	
  	} );
 
- 	wp.customize( 'eli_footer_copyright_dribbble', function( value ) {
+ 	wp.customize( 'eli_social_dribbble', function( value ) {
 	
 	value.bind( function( to ) {
 
@@ -108,7 +134,7 @@
 	
  	} );
 
- 	wp.customize( 'eli_footer_copyright_github', function( value ) {
+ 	wp.customize( 'eli_social_github', function( value ) {
 	
 	value.bind( function( to ) {
 
@@ -122,7 +148,7 @@
 	
  	} );
 
- 	wp.customize( 'eli_footer_copyright_email', function( value ) {
+ 	wp.customize( 'eli_social_email', function( value ) {
 	
 	value.bind( function( to ) {
 

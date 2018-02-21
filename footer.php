@@ -1,31 +1,28 @@
 <?php
-
 /**
- *
+ * Footer for Eli Theme.
  *
  * @package eli
  */
-
 ?>
 
 </body>
-<?php 
-?>
 <footer class="footer">
-<?php if( ! is_page() ) {
+<?php
+if ( ! is_page() ) {
 
-  get_template_part( 'template-parts/footer/footer', 'widgets' );  
+	get_template_part( 'template-parts/footer/footer', 'widgets' );
 
-}else{
+} else {
 
-  $hide_footer = get_post_meta( $post->ID, 'eli_hide_page_footer', true );
+	$hide_footer = get_post_meta( $post->ID, 'eli_hide_page_footer', true );
 
-  if( '1' != $hide_footer ) {
-  	
-    get_template_part( 'template-parts/footer/footer', 'widgets' );
-  }
+	if ( '1' != $hide_footer ) {
 
-} ?>
+		get_template_part( 'template-parts/footer/footer', 'widgets' );
+	}
+}
+?>
  
 </footer>
 <?php wp_footer(); ?>

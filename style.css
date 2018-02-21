@@ -78,6 +78,13 @@ h2.entry-title a:hover{
     text-decoration:none;
 }
 
+#footer-menu li{
+  display:inline-block;
+  font-size:10px;
+}
+
+#footer-menu li.active a{ color:rgba( 0,0,0,0.9); }
+
 a{ color:#777; }
 a:hover{ 
     color:#333;
@@ -265,6 +272,9 @@ table tbody + tbody {
  */
  .eli-footer-social-icons i { padding:20px; }
 
+.light{ color: white; }
+.light:hover{ color: rgba( 255, 255, 255, 0.9 ); }
+
 .footer ul{
   list-style-type:none;
   margin-left:0;
@@ -281,3 +291,8 @@ table tbody + tbody {
 #ExpirationYear{ margin-left:10px; }
 
 .hidden{ display:none; }
+
+/**
+ * PMPRO STYLING
+ */
+ .pmpro_btn-submit-checkout{ max-width:175px; }

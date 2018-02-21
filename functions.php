@@ -15,8 +15,8 @@ require get_template_directory() . '/includes/customizer.php';
 function eli_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'top'    => __( 'Top Menu', 'twentyseventeen' ),
-		'social' => __( 'Social Links Menu', 'twentyseventeen' ),
+		'top'    => __( 'Top Menu', 'eli' ),
+		'footer' => __( 'Footer Menu', 'eli' ),
 	) );
 
 
@@ -105,25 +105,6 @@ function eli_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'eli_widgets_init' );
-
-/**
- * Add Custom classes to menu.
- */
-
-function eli_nav_menu_css( $classes, $item, $args ) {
- 	
- 	if( 'top' === $args->theme_location ) {
- 		$classes[] = 'nav-item';
-
- 		if( in_array( 'current-menu-item', $classes ) ) {
- 			$classes[] = 'active';
- 		}
- 	}
-    
-    return $classes;
-}
-add_filter( 'nav_menu_css_class' , 'eli_nav_menu_css' , 10, 3 );
-
 
 if ( ! function_exists( 'eli_entry_footer' ) ) :
 /**
@@ -287,3 +268,38 @@ function eli_customizer_preview() {
 
 add_action( 'customize_preview_init' , 'eli_customizer_preview' );
 
+
+/**
+ * Function to output a 'menu' for social icons.
+ * @param string $color_scheme This takes either 'light' or 'dark'.
+ */
+function eli_get_social_icons( $color_scheme = NULL ) {
+
+	$eli_footer_social_elements = array(
+		'facebook' => 'facebook',
+		'twitter' => 'twitter',
+		'instagram' => 'instagram',
+		'google_plus' => 'google-plus',     
+		'linkedin' => 'linkedin',
+		'dribbble' => 'dribbble',
+		'github' => 'github',
+		'email' => 'envelope',
+	);
+
+	if ( empty( $color_scheme ) || 'light' != $color_scheme ) {
+		$color_scheme = 'dark';
+	}
+
+	// loop through customizer settings and display these fields.
+	foreach( $eli_footer_social_elements as $setting_name => $fa ){
+
+		$show_social_element = ( !get_theme_mod( "eli_social_$setting_name" ) ) ? 'hidden' : '';
+
+		$url = esc_url( get_theme_mod( "eli_social_$setting_name" ) );
+
+		$output .= '<a id="eli-footer-copyright-' . $setting_name . '" href="'. $url .'" target="_blank" rel="noopener" class="eli-social-icon ' . $show_social_element . ' ' . $color_scheme . '"><i class="fa fa-' . $fa . '"></i></a> ';
+	}
+
+	return $output;
+ 
+}
