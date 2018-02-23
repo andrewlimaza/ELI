@@ -35,8 +35,22 @@ The dependencies can be found in /src/ after running "gulp copy-assets" terminal
 ...and now go out and play!
 */
 
+#eli-top-navbar{
+  border-bottom:1px solid #DDD;
+}
+
+#single-post-container{
+  margin-top:2%;
+}
+
 /** Fix overflow issue **/
 body { overflow-x: hidden; }
+
+h1.entry-title{
+  margin-bottom:5%;
+  margin-top:1%;
+
+}
 
 /** Link Colors Etc. **/
 h2.entry-title a{
@@ -290,9 +304,9 @@ table tbody + tbody {
 
 #ExpirationYear{ margin-left:10px; }
 
-.hidden{ display:none; }
-
 /**
  * PMPRO STYLING
  */
  .pmpro_btn-submit-checkout{ max-width:175px; }
+.hidden{ display:none; }
+

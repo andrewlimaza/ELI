@@ -185,9 +185,8 @@ function eli_page_metabox( $post ) {
 
 
 	?>
-		
 		<label for="eli_hide_page_navbar"><?php _e( 'Hide Page Navigation:', 'eli' ); ?></label>
-		<input type="checkbox" class="form-check-input" id="eli_hide_page_navbar" name="eli_hide_page_navbar" value="1" <?php checked( $hide_page_title, "1" ); ?>/>
+		<input type="checkbox" class="form-check-input" id="eli_hide_page_navbar" name="eli_hide_page_navbar" value="1" <?php checked( $hide_page_navbar, "1" ); ?>/>
 		<label for="eli_hide_page_title"><?php _e( 'Hide Page Title:', 'eli' ); ?></label>
 		<input type="checkbox" id="eli_hide_page_title" name="eli_hide_page_title" value="1" <?php checked( $hide_page_title, "1" ); ?>/>
 		<label for="eli_hide_page_footer"><?php _e( 'Hide Page Footer:', 'eli' ); ?></label>

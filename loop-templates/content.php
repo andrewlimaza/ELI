@@ -2,7 +2,7 @@
 /**
  * Post rendering content according to caller of get_template_part.
  *
- * @package understrap
+ * @package eli
  */
 
 ?>
@@ -23,11 +23,11 @@
 
 	<div class="entry-content">
 
-		<?php the_excerpt(); ?>
+		<?php the_content(); ?>
 
 		<?php
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'eli' ),
 			'after'  => '</div>',
 		) );
 		?>
