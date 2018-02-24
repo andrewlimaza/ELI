@@ -43,6 +43,13 @@ The dependencies can be found in /src/ after running "gulp copy-assets" terminal
   margin-top:2%;
 }
 
+.content-area {
+    margin-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+
 /** Fix overflow issue **/
 body { overflow-x: hidden; }
 

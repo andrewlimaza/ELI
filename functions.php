@@ -185,12 +185,34 @@ function eli_page_metabox( $post ) {
 
 
 	?>
-		<label for="eli_hide_page_navbar"><?php _e( 'Hide Page Navigation:', 'eli' ); ?></label>
-		<input type="checkbox" class="form-check-input" id="eli_hide_page_navbar" name="eli_hide_page_navbar" value="1" <?php checked( $hide_page_navbar, "1" ); ?>/>
-		<label for="eli_hide_page_title"><?php _e( 'Hide Page Title:', 'eli' ); ?></label>
-		<input type="checkbox" id="eli_hide_page_title" name="eli_hide_page_title" value="1" <?php checked( $hide_page_title, "1" ); ?>/>
-		<label for="eli_hide_page_footer"><?php _e( 'Hide Page Footer:', 'eli' ); ?></label>
-		<input type="checkbox" id="eli_hide_page_footer" name="eli_hide_page_footer" value="1" <?php checked( $hide_page_footer, "1" ); ?>/>
+	<table id="eli-page-settings">
+		<tr>
+			<td>
+				<label for="eli_hide_page_navbar"><?php _e( 'Hide Page Navigation:', 'eli' ); ?></label>
+				<input type="checkbox" class="form-check-input" id="eli_hide_page_navbar" name="eli_hide_page_navbar" value="1" <?php checked( $hide_page_navbar, "1" ); ?>/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="eli_hide_page_title"><?php _e( 'Hide Page Title:', 'eli' ); ?></label>
+				<input type="checkbox" id="eli_hide_page_title" name="eli_hide_page_title" value="1" <?php checked( $hide_page_title, "1" ); ?>/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="eli_hide_page_footer"><?php _e( 'Hide Page Footer:', 'eli' ); ?></label>
+				<input type="checkbox" id="eli_hide_page_footer" name="eli_hide_page_footer" value="1" <?php checked( $hide_page_footer, "1" ); ?>/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<br>
+				<em><?php _e( 'These settings are only available for pages. Please select an option to activate it and update your page to save the settings.', 'eli' ); ?></em>
+			</td>
+		</tr>
+	
+
+	</table>
 	<?php
 
 }
