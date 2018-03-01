@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Require TGM Activation Class
+ */
+require_once( get_template_directory() . '/includes/tgm-plugin-activation/eli-plugin-activation.php' );
 
 /**
  * Load custom WordPress nav walker.
