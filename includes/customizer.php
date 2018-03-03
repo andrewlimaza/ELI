@@ -11,6 +11,85 @@
  * @param object $wp_customize The customize object.
  */
 function eli_customizer_register( $wp_customize ) {
+
+    /**
+     *
+     * Custom scripts.
+     *
+     */
+     $wp_customize->add_section( 'eli_theme_scripts',
+         array(
+            'title'       => __( 'Additional Scripts', 'eli' ), //Visible title of section
+            'priority'    => 1000, //Determines what order this appears in
+            'capability'  => 'edit_theme_options', //Capability needed to tweak
+            //'description' => __( 'General Settings For Footer.' , 'eli' ), //Descriptive tooltip
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_header_script', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_body_script', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_setting( 'eli_footer_script', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+         array(
+            'default'    => '', //Default setting/value to save
+            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
+            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
+            'transport'  => 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+         ) 
+    );
+
+    $wp_customize->add_control( new WP_Customize_Control ( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_header_script', //Set a unique ID for the control
+         array(
+            'type'       => 'textarea',
+            'label'      => __( 'Header Scripts', 'eli' ), //Admin-visible name of the control
+            'settings'   => 'eli_header_script', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_theme_scripts',
+            'description' => __( 'You are able to add in JavaScript scripts such as <strong>Google Tracking code</strong> to the header of your site. <strong>Please include &lt;script&gt; tags</strong>.', 'eli' ),
+         ) 
+    ) );
+
+    $wp_customize->add_control( new WP_Customize_Control ( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_body_script', //Set a unique ID for the control
+         array(
+            'type'       => 'textarea',
+            'label'      => __( 'Body Scripts', 'eli' ), //Admin-visible name of the control
+            'settings'   => 'eli_body_script', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_theme_scripts',
+            'description' => __( 'You are able to add in JavaScript scripts right before the closing body tag (&lt;/body&gt;). <strong>Please include &lt;script&gt; tags</strong>.', 'eli' ),
+         ) 
+    ) );
+
+
+    $wp_customize->add_control( new WP_Customize_Control ( //Instantiate the color control class
+         $wp_customize, //Pass the $wp_customize object (required)
+         'eli_footer_script', //Set a unique ID for the control
+         array(
+            'type'       => 'textarea',
+            'label'      => __( 'Footer Scripts', 'eli' ), //Admin-visible name of the control
+            'settings'   => 'eli_footer_script', //Which setting to load and manipulate (serialized is okay)
+            'section'    => 'eli_theme_scripts',
+            'description' => __( 'You are able to add in JavaScript scripts to the footer of your site. <strong>Please include &lt;script&gt; tags</strong>.', 'eli' ),
+         ) 
+    ) );
+
     /**
      *
      * START OF FOOTER SECTION
