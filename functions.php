@@ -343,12 +343,12 @@ function eli_woocommerce_cart_menu( $menu, $args ) {
 
 	ob_start();
 		global $woocommerce;
-		$viewing_cart = __('View your shopping cart', 'your-theme-slug');
-		$start_shopping = __('Start shopping', 'your-theme-slug');
+		$viewing_cart = __('View your shopping cart', 'eli');
+		$start_shopping = __('Start shopping', 'eli');
 		$cart_url = $woocommerce->cart->get_cart_url();
 		$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
 		$cart_contents_count = $woocommerce->cart->cart_contents_count;
-		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'your-theme-slug'), $cart_contents_count);
+		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'eli'), $cart_contents_count);
 		$cart_total = $woocommerce->cart->get_cart_total();
 
 			if ($cart_contents_count == 0) {
@@ -377,10 +377,8 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
 
     ob_start();
     ?>
-    <li class="nav-item">
     	<a class="wcmenucart-contents nav-link" href="<?php echo wc_get_cart_url(); ?>">
     	<i class="fa <?php echo $icon; ?>"></i> <?php echo sprintf (_n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> - <?php echo WC()->cart->get_cart_total(); ?></a>
-    </li>
     <?php
 
     $fragments['a.wcmenucart-contents'] = ob_get_clean();
