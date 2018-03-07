@@ -31,6 +31,9 @@ function eli_setup() {
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'woocommerce' );
 
+	//let's support different languages.
+	load_theme_textdomain( 'my-theme', get_template_directory() . '/languages' );
+
 }
 add_action( 'after_setup_theme', 'eli_setup' );
 
