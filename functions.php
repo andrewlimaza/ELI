@@ -328,3 +328,63 @@ function eli_get_social_icons( $color_scheme = NULL ) {
 	return $output;
  
 }
+
+
+/**
+ * Place a cart icon with number of items and total cost in the menu bar.
+ *
+ * Source: http://wordpress.org/plugins/woocommerce-menu-bar-cart/
+ */
+function eli_woocommerce_cart_menu( $menu, $args ) {
+
+	// Check if WooCommerce is active and add a new item to a menu assigned to Primary Navigation Menu location
+	if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || 'top' !== $args->theme_location )
+		return $menu;
+
+	ob_start();
+		global $woocommerce;
+		$viewing_cart = __('View your shopping cart', 'your-theme-slug');
+		$start_shopping = __('Start shopping', 'your-theme-slug');
+		$cart_url = $woocommerce->cart->get_cart_url();
+		$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+		$cart_contents_count = $woocommerce->cart->cart_contents_count;
+		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'your-theme-slug'), $cart_contents_count);
+		$cart_total = $woocommerce->cart->get_cart_total();
+
+			if ($cart_contents_count == 0) {
+				$menu_item = '<li class="right nav-item"><a class="wcmenucart-contents nav-link" href="'. $shop_page_url .'" title="'. $start_shopping .'">';
+			} else {
+				$menu_item = '<li class="right nav-item"><a class="wcmenucart-contents nav-link" href="'. $cart_url .'" title="'. $viewing_cart .'">';
+			}
+
+			$icon = apply_filters( 'eli_menu_cart_icon', 'fa-shopping-cart' );
+
+			$menu_item .= '<i class="fa ' . $icon . '"></i> ';
+
+			$menu_item .= $cart_contents.' - '. $cart_total;
+			$menu_item .= '</a></li>';
+		echo $menu_item;
+	$social = ob_get_clean();
+
+	return $menu . $social;
+
+}
+add_filter( 'wp_nav_menu_items','eli_woocommerce_cart_menu', 10, 2 );
+
+function woocommerce_header_add_to_cart_fragment( $fragments ) {
+
+	$icon = apply_filters( 'eli_menu_cart_icon', 'fa-shopping-cart' );
+
+    ob_start();
+    ?>
+    <li class="nav-item">
+    	<a class="wcmenucart-contents nav-link" href="<?php echo wc_get_cart_url(); ?>">
+    	<i class="fa <?php echo $icon; ?>"></i> <?php echo sprintf (_n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> - <?php echo WC()->cart->get_cart_total(); ?></a>
+    </li>
+    <?php
+
+    $fragments['a.wcmenucart-contents'] = ob_get_clean();
+    
+    return $fragments;
+}
+add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
