@@ -32,7 +32,7 @@ function eli_setup() {
 	add_theme_support( 'woocommerce' );
 
 	//let's support different languages.
-	load_theme_textdomain( 'my-theme', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'eli', get_template_directory() . '/languages' );
 
 }
 add_action( 'after_setup_theme', 'eli_setup' );
