@@ -5,7 +5,6 @@
  */
 get_header();
 ?>
-<div class="row">
 	<div class="container-fluid">
 
 			<?php
@@ -22,6 +21,5 @@ get_header();
 			?>
 
 	</div>
-</div>
 
 <?php get_footer();
