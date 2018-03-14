@@ -72,9 +72,9 @@ add_action( 'wp_enqueue_scripts', 'eli_scripts' );
  */
 function eli_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Blog Sidebar', 'twentyseventeen' ),
+		'name'          => __( 'Blog Sidebar', 'eli' ),
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Add widgets here to appear in your sidebar on blog posts and archive pages.', 'twentyseventeen' ),
+		'description'   => __( 'Add widgets here to appear in your sidebar on blog posts and archive pages.', 'eli' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -82,9 +82,9 @@ function eli_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 1', 'twentyseventeen' ),
+		'name'          => __( 'Footer 1', 'eli' ),
 		'id'            => 'footer-1',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
+		'description'   => __( 'Add widgets here to appear in your footer.', 'eli' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -92,9 +92,9 @@ function eli_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 2', 'twentyseventeen' ),
+		'name'          => __( 'Footer 2', 'eli' ),
 		'id'            => 'footer-2',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
+		'description'   => __( 'Add widgets here to appear in your footer.', 'eli' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -102,9 +102,9 @@ function eli_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Footer 3', 'twentyseventeen' ),
+		'name'          => __( 'Footer 3', 'eli' ),
 		'id'            => 'footer-3',
-		'description'   => __( 'Add widgets here to appear in your footer.', 'twentyseventeen' ),
+		'description'   => __( 'Add widgets here to appear in your footer.', 'eli' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -318,6 +318,8 @@ function eli_get_social_icons( $color_scheme = NULL ) {
 		$color_scheme = 'dark';
 	}
 
+	$output = '';
+
 	// loop through customizer settings and display these fields.
 	foreach( $eli_footer_social_elements as $setting_name => $fa ){
 
@@ -341,8 +343,9 @@ function eli_get_social_icons( $color_scheme = NULL ) {
 function eli_woocommerce_cart_menu( $menu, $args ) {
 
 	// Check if WooCommerce is active and add a new item to a menu assigned to Primary Navigation Menu location
-	if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || 'top' !== $args->theme_location )
+	if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) || 'top' !== $args->theme_location ) {
 		return $menu;
+	}
 
 	ob_start();
 		global $woocommerce;
@@ -372,7 +375,10 @@ function eli_woocommerce_cart_menu( $menu, $args ) {
 	return $menu . $social;
 
 }
-add_filter( 'wp_nav_menu_items','eli_woocommerce_cart_menu', 10, 2 );
+if( class_exists( 'WooCommerce' ) ){
+	add_filter( 'wp_nav_menu_items','eli_woocommerce_cart_menu', 10, 2 );
+}
+
 
 function woocommerce_header_add_to_cart_fragment( $fragments ) {
 
