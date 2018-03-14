@@ -27,14 +27,15 @@
 					<?php } else {
 						the_custom_logo();
 					} ?><!-- end custom logo -->
-
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
       	
        <?php 
-       if( has_nav_menu( 'top' ) ) :
+       		if( has_nav_menu( 'top' ) ) :
+       	?>
 
+       	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+	<?php
        wp_nav_menu(
 			array(
 				'theme_location'  => 'top',
