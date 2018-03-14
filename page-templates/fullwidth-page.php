@@ -5,8 +5,7 @@
  */
 get_header();
 ?>
-<div class="row">
-	<div class="container-fluid">
+	<div class="container-fluid" style="padding-left:0;padding-right:0;">
 			<?php
 			while ( have_posts() ) : the_post();
 
@@ -19,7 +18,6 @@ get_header();
 
 			endwhile; // End of the loop.
 			?>
-		</div>
 	</div>
 
 <?php get_footer();
