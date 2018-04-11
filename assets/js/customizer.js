@@ -8,7 +8,7 @@
 
 ( function( $ ) {
 
-	
+
 
 
 	wp.customize( 'eli_footer_copyright_text', function( value ) {
@@ -50,7 +50,7 @@
 
 
 	wp.customize( 'eli_social_facebook', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -65,7 +65,7 @@
 
 
 	wp.customize( 'eli_social_twitter', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -75,11 +75,11 @@
 		}
 
 	} );
-	
+
  	} );
 
  	wp.customize( 'eli_social_instagram', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -89,11 +89,11 @@
 		}
 
 	} );
-	
+
  	} );
 
  	wp.customize( 'eli_social_google_plus', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -103,11 +103,11 @@
 		}
 
 	} );
-	
+
  	} );
 
  	wp.customize( 'eli_social_linkedin', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -117,11 +117,11 @@
 		}
 
 	} );
-	
+
  	} );
 
  	wp.customize( 'eli_social_dribbble', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -131,11 +131,11 @@
 		}
 
 	} );
-	
+
  	} );
 
  	wp.customize( 'eli_social_github', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -145,11 +145,11 @@
 		}
 
 	} );
-	
+
  	} );
 
  	wp.customize( 'eli_social_email', function( value ) {
-	
+
 	value.bind( function( to ) {
 
 		if ( to ) {
@@ -159,7 +159,51 @@
 		}
 
 	} );
-	
+
  	} );
+
+ 	wp.customize( 'eli_nav_bg_color', function( value ) {
+		value.bind( function( newval ) {
+			$( '#eli-top-navbar' ).css( 'background-color', newval );
+			$( '.dropdown-menu' ).css( 'background-color', newval );
+		} );
+	} );
+
+	wp.customize( 'eli_nav_a_link_color', function( value ) {
+		value.bind( function( newval ) {
+			$('#eli-top-navbar .navbar-nav li:not(.active) .nav-link').css('color', newval);
+		} );
+	} );
+
+	wp.customize( 'eli_nav_active_a_link_color', function( value ) {
+		value.bind( function( newval ) {
+			$('#eli-top-navbar .navbar-nav .active .nav-link').css('color', newval);
+		} );
+	} );
+
+	wp.customize( 'eli_a_link_color', function( value ) {
+		value.bind( function( newval ) {
+			$('.eli-content-container a').css('color', newval );
+			$('.footer a').css('color', newval );
+		} );
+	} );
+
+	wp.customize( 'eli_body_bg_color', function( value ) {
+		value.bind( function( newval ) {
+			$('body').css('background-color', newval );
+		} );
+	} );
+
+	wp.customize( 'eli_footer_bg_color', function( value ) {
+		value.bind( function( newval ) {
+			$('.footer').css('background-color', newval );
+		} );
+	} );
+
+	wp.customize( 'eli_footer_color', function( value ) {
+		value.bind( function( newval ) {
+			$('.footer').css('color', newval );
+		} );
+	} );
 
 } )( jQuery );

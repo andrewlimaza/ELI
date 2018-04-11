@@ -62,6 +62,8 @@ function eli_scripts() {
 
 	wp_enqueue_style( 'font-awesome', get_theme_file_uri( '/includes/font-awesome/css/font-awesome.min.css' ) );
 
+	do_action("eli_enqueue_script_extender");
+
 }
 add_action( 'wp_enqueue_scripts', 'eli_scripts' );
 
@@ -170,7 +172,7 @@ function eli_get_entry_meta(){
  */
 
 function eli_add_page_settings( $post ) {
-    add_meta_box( 
+    add_meta_box(
         'my-meta-box',
         __( 'ELI Page Settings', 'eli' ),
         'eli_page_metabox',
@@ -217,7 +219,7 @@ function eli_page_metabox( $post ) {
 				<em><?php _e( 'These settings are only available for pages. Please select an option to activate it and update your page to save the settings.', 'eli' ); ?></em>
 			</td>
 		</tr>
-	
+
 
 	</table>
 	<?php
@@ -227,7 +229,7 @@ function eli_page_metabox( $post ) {
 function eli_save_page_meta( $post_id ) {
 
 	// Check if the user can edit a page.
-    if ( 'page' == $_POST['post_type'] ) {
+    if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
         if ( ! current_user_can( 'edit_page', $post_id ) ) {
             return $post_id;
         }
@@ -307,7 +309,7 @@ function eli_get_social_icons( $color_scheme = NULL ) {
 		'facebook' => 'facebook',
 		'twitter' => 'twitter',
 		'instagram' => 'instagram',
-		'google_plus' => 'google-plus',     
+		'google_plus' => 'google-plus',
 		'linkedin' => 'linkedin',
 		'dribbble' => 'dribbble',
 		'github' => 'github',
@@ -331,7 +333,7 @@ function eli_get_social_icons( $color_scheme = NULL ) {
 	}
 
 	return $output;
- 
+
 }
 
 
@@ -391,7 +393,62 @@ function woocommerce_header_add_to_cart_fragment( $fragments ) {
     <?php
 
     $fragments['a.wcmenucart-contents'] = ob_get_clean();
-    
+
     return $fragments;
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart_fragment' );
+
+/**
+ * Adds all inline CSS from the customizer
+*/
+function eli_customizer_inline_head_generator(){
+	$output_css = "";
+
+	$nav_bg_color = get_theme_mod('eli_nav_bg_color', false);
+	if($nav_bg_color !== false){
+		$output_css .= "#eli-top-navbar,.dropdown-menu { background-color: " . $nav_bg_color . "; }";
+	}
+
+	$nav_link_color = get_theme_mod('eli_nav_a_link_color', false);
+	if($nav_link_color !== false){
+		$output_css .= "#eli-top-navbar .navbar-nav li:not(.active) .nav-link { color: " . $nav_link_color . "; }";
+	}
+
+	$nav_link_hover_color = get_theme_mod('eli_nav_hover_a_link_color', false);
+	if($nav_link_hover_color !== false){
+		$output_css .= "#eli-top-navbar .navbar-nav li .nav-link:hover { color: " . $nav_link_hover_color . "; }";
+	}
+
+	$nav_active_link_color = get_theme_mod('eli_nav_active_a_link_color', false);
+	if($nav_active_link_color !== false){
+		$output_css .= "#eli-top-navbar .navbar-nav .active .nav-link { color: " . $nav_active_link_color . "; }";
+	}
+
+	$link_color = get_theme_mod('eli_a_link_color', false);
+	if($link_color !== false){
+		$output_css .= ".eli-content-container a, .footer a { color: " . $link_color . "; }";
+	}
+
+	$link_hover_color = get_theme_mod('eli_hover_a_link_color', false);
+	if($link_hover_color !== false){
+		$output_css .= ".eli-content-container a:hover, .footer a:hover { color: " . $link_hover_color . "; }";
+	}
+
+	$body_bg_color = get_theme_mod('eli_body_bg_color', false);
+	if($body_bg_color !== false){
+		$output_css .= "body { background-color: " . $body_bg_color . "; }";
+	}
+
+	$footer_bg_color = get_theme_mod('eli_footer_bg_color', false);
+	$footer_color = get_theme_mod('eli_footer_color', false);
+	if($footer_bg_color !== false || $footer_color !== false){
+		$footer_bg_color = $footer_bg_color == false ? "#fff" : $footer_bg_color;
+		$footer_color = $footer_color == false ? "#000" : $footer_color;
+		$output_css .= ".footer { background-color: " . $footer_bg_color . "; color: " . $footer_color . "; }";
+	}
+
+	if(!empty($output_css)){
+		wp_add_inline_style('eli_style', $output_css);
+	}
+}
+add_action("eli_enqueue_script_extender", "eli_customizer_inline_head_generator");

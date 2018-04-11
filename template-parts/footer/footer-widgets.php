@@ -12,7 +12,7 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
 				<?php dynamic_sidebar( 'footer-1' ); ?>
 			</div>
 			<?php } ?>
-			
+
 			<?php if( is_active_sidebar( 'footer-2' ) ) { ?>
 			<div class="col">
 				<?php dynamic_sidebar( 'footer-2' ); ?>
@@ -38,12 +38,12 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
 	      			<?php
 
 	      			echo eli_get_social_icons();
- 
+
 	      			?>
 	      		</div>
 
 	      		<div class="container" id="footer-menu-container">
-	      		<?php 
+	      		<?php
 		      		if( has_nav_menu( 'footer' ) ) :
 
 		       			wp_nav_menu(
@@ -61,7 +61,7 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
 	       			endif;
 	      		?>
 	      	</div>
-        		<p><small id="eli-copyright-text"><?php echo get_theme_mod( 'eli_footer_copyright_text' ); ?></small></p>
+        		<p><small id="eli-copyright-text"><?php echo get_theme_mod( 'eli_footer_copyright_text', '&copy; ' . date("Y") . ' ' . get_bloginfo('name') ); ?></small></p>
      		</div>
     	</div>
 	</div>
