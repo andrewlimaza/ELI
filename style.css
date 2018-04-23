@@ -299,3 +299,12 @@ table tbody + tbody {
  .pmpro_btn-submit-checkout{ max-width:175px; }
 .hidden{ display:none; }
 
+
+/**
+ * Comments
+ */
+.comment-meta{ font-size:10px; }
+
+.comment-author img{ border-radius:100px; }
+
+.comment-list{ list-style-type:none; }
