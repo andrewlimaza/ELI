@@ -31,6 +31,10 @@ WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstr
     padding-right: 2%;
 }
 
+.wp-post-image{
+    width:100%;
+    height:auto;
+}
 
 /** Fix overflow issue **/
 body { overflow-x: hidden; }
