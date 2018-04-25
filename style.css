@@ -312,3 +312,12 @@ table tbody + tbody {
 .comment-author img{ border-radius:100px; }
 
 .comment-list{ list-style-type:none; }
+
+/* Easy Digital Downloads Support */
+/* Hide the published date, author, category, and author box on downloads archive page */
+.post-type-archive-download .entry-meta {display:none;}
+.post-type-archive-download .author-box {display:none;}
+
+/* Hide the published date, author, category, and author box on single download page */
+.single-download .entry-meta {display:none;}
+.single-download .author-box {display:none;}
