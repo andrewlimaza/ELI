@@ -157,7 +157,7 @@ endif;
  */
 function eli_get_entry_meta(){
 	?>
-	<div class="eli-post-meta">
+	<div class="eli-post-meta entry-meta">
 		<i class="fa fa-user"></i> <?php echo get_the_author_posts_link(); ?>
 		<i class="fa fa-tags"></i> <?php echo get_the_category_list( ', ' ); ?>
 		<i class="fa fa-comments"></i><a href="<?php echo get_comments_link(); ?>"> <?php echo comments_number( __( 'Leave a Comment', 'eli' ) ); ?></a>
