@@ -1,20 +1,27 @@
 <?php
 
+
+define( 'ELI_DIR', get_template_directory() );
+
 /**
  * Require TGM Activation Class
  */
-require_once( get_template_directory() . '/includes/tgm-plugin-activation/eli-plugin-activation.php' );
+require_once( ELI_DIR . '/includes/tgm-plugin-activation/eli-plugin-activation.php' );
 
 /**
  * Load custom WordPress nav walker.
  */
-require_once( get_template_directory() . '/includes/bootstrap-wp-navwalker.php' );
+require_once( ELI_DIR . '/includes/bootstrap-wp-navwalker.php' );
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/includes/customizer.php';
+require_once( ELI_DIR . '/includes/customizer.php' );
 
+/**
+ * License checker.
+ */
+require_once( ELI_DIR . '/includes/license.php' );
 
 function eli_setup() {
 	// This theme uses wp_nav_menu() in two locations.
@@ -32,7 +39,9 @@ function eli_setup() {
 	add_theme_support( 'woocommerce' );
 
 	//let's support different languages.
-	load_theme_textdomain( 'eli', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'eli', ELI_DIR . '/languages' );
+
+
 
 }
 add_action( 'after_setup_theme', 'eli_setup' );
