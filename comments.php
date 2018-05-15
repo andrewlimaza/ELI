@@ -74,10 +74,10 @@ if ( post_password_required() ) {
 			),
 		'fields' => apply_filters( 'comment_form_default_fields', array(
 				'autor' 				=> '<div class="form-group">' . '<label for="author">' . __( 'Name', 'wp_babobski' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
-										'<input id="author" name="author" class="form-control" type="text" value="" size="30"' . $aria_req . ' />'.
+										'<input id="author" name="author" class="form-control" type="text" value="" size="30" />'.
 										'<p id="d1" class="text-danger"></p>' . '</div>',
 				'email'					=> '<div class="form-group">' .'<label for="email">' . __( 'Email', 'wp_babobski' ) . '</label> ' . ( $req ? '<span>*</span>' : '' ) .
-										'<input id="email" name="email" class="form-control" type="text" value="" size="30"' . $aria_req . ' />'.
+										'<input id="email" name="email" class="form-control" type="text" value="" size="30" />'.
 										'<p id="d2" class="text-danger"></p>' . '</div>',
 				'url'					=> '')),
 				'comment_field'			=> '<div class="form-group">' . '<label for="comment">' . __( 'Comment', 'wp_babobski' ) . '</label><span>*</span>' .

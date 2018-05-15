@@ -26,18 +26,10 @@
 
 	</header><!-- .entry-header -->
 
-
-
 	<div class="entry-content">
 
-		<?php the_content(); ?>
-
-		<?php
-		wp_link_pages( array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'eli' ),
-			'after'  => '</div>',
-		) );
-		?>
+		<?php the_content( sprintf(
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'eli' ), get_the_title() ) ); ?>
 
 	</div><!-- .entry-content -->
 
