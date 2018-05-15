@@ -42,6 +42,8 @@ body { overflow-x: hidden; }
 h1.entry-title{
   margin-bottom:5%;
   margin-top:1%;
+  font-family: 'Open Sans', Arial;
+  text-decoration: none;
 
 }
 
@@ -49,7 +51,6 @@ h1.entry-title{
 h2.entry-title{
   font-family: 'Open Sans', Arial;
   text-decoration: none;
-  color:#777;
 }
 
 h2.entry-title a:hover{
