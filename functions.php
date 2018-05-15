@@ -132,25 +132,25 @@ function eli_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'understrap' ) );
+		$categories_list = get_the_category_list( esc_html__( ', ', 'eli' ) );
 		if ( $categories_list ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'understrap' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'eli' ) . '</span>', $categories_list ); // WPCS: XSS OK.
 		}
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'understrap' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'eli' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'understrap' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'eli' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( esc_html__( 'Leave a comment', 'understrap' ), esc_html__( '1 Comment', 'understrap' ), esc_html__( '% Comments', 'understrap' ) );
+		comments_popup_link( esc_html__( 'Leave a comment', 'eli' ), esc_html__( '1 Comment', 'eli' ), esc_html__( '% Comments', 'eli' ) );
 		echo '</span>';
 	}
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'understrap' ),
+			esc_html__( 'Edit %s', 'eli' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
 		'<span class="edit-link">',
@@ -460,4 +460,18 @@ function eli_customizer_inline_head_generator(){
 		wp_add_inline_style('eli_style', $output_css);
 	}
 }
-add_action("eli_enqueue_script_extender", "eli_customizer_inline_head_generator");
+add_action( "eli_enqueue_script_extender", "eli_customizer_inline_head_generator" );
+
+function manual_excerpt_more( $excerpt ) {
+	$excerpt_more = '';
+	if( has_excerpt() ) {
+    	$excerpt_more = '<br/><a href="' . get_permalink() . '" rel="nofollow" class="more-link">' .
+	sprintf(
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'eli' ),
+			get_the_title()
+			). '</a>';
+	}
+
+	return $excerpt . $excerpt_more;
+}
+add_filter( 'get_the_excerpt', 'manual_excerpt_more' );

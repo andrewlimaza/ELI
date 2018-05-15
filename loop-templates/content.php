@@ -28,8 +28,17 @@
 
 	<div class="entry-content">
 
-		<?php the_content( sprintf(
-			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'eli' ), get_the_title() ) ); ?>
+		<?php 
+
+		if( ! is_single() && has_excerpt() ) {
+			the_excerpt();
+		} else {
+			the_content( sprintf(
+			__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'eli' ),
+			get_the_title()
+			) );
+		} 
+		?>
 
 	</div><!-- .entry-content -->
 
