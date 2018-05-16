@@ -21,7 +21,12 @@ require_once( ELI_DIR . '/includes/customizer.php' );
 /**
  * License checker.
  */
-require_once( ELI_DIR . '/includes/license.php' );
+require_once( ELI_DIR . '/includes/updates/license.php' );
+
+/**
+ * Update checker.
+ */
+require_once( ELI_DIR . '/includes/updates/update-checker.php' );
 
 function eli_setup() {
 	// This theme uses wp_nav_menu() in two locations.

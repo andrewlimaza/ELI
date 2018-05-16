@@ -21,12 +21,12 @@ class Yoohoo_License_Handler{
 			__( 'Licensing', 'eli' ),
 			'manage_options', 
 			'yoohoo-license', 
-			array( $this, 'some_function' ) 
+			array( $this, 'eli_license_key_settings_page' ) 
 		);
 	}
 
-	public function some_function() {
-		require_once( ELI_DIR . '/includes/license-settings-page.php' );
+	public function eli_license_key_settings_page() {
+		require_once( ELI_DIR . '/includes/updates/license-settings-page.php' );
 	}
 
 	public static function is_key_valid( $license_key ){
