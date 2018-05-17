@@ -64,6 +64,5 @@ public function __construct( $product_id, $product_name, $text_domain, $api_url,
         $this->type = $type;
         $this->plugin_file = $plugin_file;
     }
-}
 
 } // end of class.
