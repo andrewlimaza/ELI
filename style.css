@@ -364,3 +364,7 @@ table tbody + tbody {
     text-decoration:underline;
     line-height:2;
 }
+
+.button-primary{
+    border: 1px solid #ced4da;
+}
