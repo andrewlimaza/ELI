@@ -5,7 +5,7 @@ Author: YooHoo Themes
 Author URI: https://yoohoothemes.com;
 Description: ELI is a simple Bootstrap 4 WordPress theme which is great for almost any project and will work well with any plugin. No bloatware, strict coding standards and only essential features added.
 Version: 1.0.0
-License: GNU General Public License v2 or later
+License: GNU General Public License v2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: eli
 
@@ -42,14 +42,12 @@ body { overflow-x: hidden; }
 h1.entry-title{
   margin-bottom:5%;
   margin-top:1%;
-  font-family: 'Open Sans', Arial;
   text-decoration: none;
 
 }
 
 /** Link Colors Etc. **/
 h2.entry-title{
-  font-family: 'Open Sans', Arial;
   text-decoration: none;
 }
 
@@ -58,7 +56,6 @@ h2.entry-title a:hover{
 }
 
 .entry-content{
-    font-family: 'Roboto', Arial;
     font-weight: 200;
 }
 /** Post Meta Data Styling **/

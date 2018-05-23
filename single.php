@@ -14,7 +14,7 @@ get_header(); ?>
 
 <div class="container" id="single-post-container">
 	<div class="row">
-		<div class="col-lg-8 col-md-auto col-sm-auto">
+		<div class="col-lg-8 col-md-12 col-sm-12">
 
 			<?php
 			/* Start the Loop */
@@ -41,7 +41,7 @@ get_header(); ?>
 			?>
 
 	</div>
-		<div class="col-lg-4 col-md-auto col-sm-auto">
+		<div class="col-lg-4 col-md-12 col-sm-12">
 			<?php get_sidebar(); ?>
 		</div>
 	</div>
