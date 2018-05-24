@@ -58,6 +58,11 @@ h2.entry-title a:hover{
 .entry-content{
     font-weight: 200;
 }
+
+.entry-content img{
+	max-width:100%;
+	height:auto;
+}
 /** Post Meta Data Styling **/
 
 .eli-post-meta{
