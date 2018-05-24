@@ -9,6 +9,12 @@ define( 'ELI_DIR', get_template_directory() );
 require_once( ELI_DIR . '/includes/tgm-plugin-activation/eli-plugin-activation.php' );
 
 /**
+ * Automatic updates
+ */
+require_once( ELI_DIR . '/includes/wp-updates-theme.php');
+new WPUpdatesThemeUpdater_2291( 'http://wp-updates.com/api/2/theme', basename( get_template_directory() ) );
+
+/**
  * Load custom WordPress nav walker.
  */
 require_once( ELI_DIR . '/includes/bootstrap-wp-navwalker.php' );
@@ -21,12 +27,12 @@ require_once( ELI_DIR . '/includes/customizer.php' );
 /**
  * License checker.
  */
-require_once( ELI_DIR . '/includes/updates/license.php' );
+// require_once( ELI_DIR . '/includes/updates/license.php' );
 
 /**
  * Update checker.
  */
-require_once( ELI_DIR . '/includes/updates/update-checker.php' );
+// require_once( ELI_DIR . '/includes/updates/update-checker.php' );
 
 function eli_setup() {
 	// This theme uses wp_nav_menu() in two locations.
