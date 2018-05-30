@@ -373,8 +373,8 @@ function eli_woocommerce_cart_menu( $menu, $args ) {
 		global $woocommerce;
 		$viewing_cart = __('View your shopping cart', 'eli');
 		$start_shopping = __('Start shopping', 'eli');
-		$cart_url = $woocommerce->cart->get_cart_url();
-		$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+		$cart_url = wc_get_cart_url();
+		$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
 		$cart_contents_count = $woocommerce->cart->cart_contents_count;
 		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'eli'), $cart_contents_count);
 		$cart_total = $woocommerce->cart->get_cart_total();
