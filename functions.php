@@ -208,9 +208,9 @@ function eli_page_metabox( $post ) {
 
 	wp_nonce_field( 'eli_page_settings', 'eli_page_settings_nonce' );
 
-	$hide_page_navbar = get_post_meta( $post->ID, 'eli_hide_page_navbar', true );
-	$hide_page_title = get_post_meta( $post->ID, 'eli_hide_page_title', true );
-	$hide_page_footer = get_post_meta( $post->ID, 'eli_hide_page_footer', true );
+    $hide_page_navbar = isset( $_POST['eli_hide_page_navbar'] ) ? (int) $_POST['eli_hide_page_navbar'] : '';
+    $hide_page_title = isset( $_POST['eli_hide_page_title'] ) ? (int) $_POST['eli_hide_page_title'] : '';
+    $hide_page_footer = isset( $_POST['eli_hide_page_footer'] ) ? (int) $_POST['eli_hide_page_footer'] : '';
 
 
 	?>
@@ -373,8 +373,8 @@ function eli_woocommerce_cart_menu( $menu, $args ) {
 		global $woocommerce;
 		$viewing_cart = __('View your shopping cart', 'eli');
 		$start_shopping = __('Start shopping', 'eli');
-		$cart_url = $woocommerce->cart->get_cart_url();
-		$shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+		$cart_url = wc_get_cart_url();
+		$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
 		$cart_contents_count = $woocommerce->cart->cart_contents_count;
 		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'eli'), $cart_contents_count);
 		$cart_total = $woocommerce->cart->get_cart_total();
