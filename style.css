@@ -78,6 +78,28 @@ h2.entry-title a:hover{
 /** Custom Stlying For Eli Theme **/
 .eli-content-container{ margin-top:3%; }
 
+/** Styling for Blockquotes**/
+blockquote {
+  background: #f9f9f9;
+  /**border-left: 10px solid #ccc;**/
+  margin: 1.5em 2em;
+  width: fit-content;
+  padding: 1em 2em;
+  quotes: "\201C""\201D""\201C""\201D";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 10em;
+  margin: -70px 0 0 -3rem;
+  line-height: 0em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline-block;
+  margin: 0em;
+}
+
 /** Footer **/
 .footer-social-icons .fa-circle{
     color: black;
