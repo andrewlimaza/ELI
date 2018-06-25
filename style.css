@@ -81,10 +81,11 @@ h2.entry-title a:hover{
 /** Styling for Blockquotes**/
 blockquote {
   background: #f9f9f9;
+  /**border-left: 10px solid #ccc;**/
   margin: 1.5em 2em;
   width: fit-content;
   padding: 1em 2em;
-  quotes: "\201C""\201D""\2018""\2020";
+  quotes: "\201C""\201D""\201C""\201D";
 }
 blockquote:before {
   color: #ccc;
