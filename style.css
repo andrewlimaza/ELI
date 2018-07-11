@@ -318,7 +318,32 @@ table tbody + tbody {
 
 .comment-author img{ border-radius:100px; }
 
-.comment-list{ list-style-type:none; }
+.comment-list{
+  list-style-type:none; 
+  padding:0;
+}
+
+.comment ul{
+  list-style-type:none; 
+}
+
+.comment.depth-1 {
+  box-shadow: 0 0 5px #eceaea;
+  margin-bottom: 1rem;    
+  padding: 0.5rem;
+}
+
+.comment-body p {
+  padding-left: 0.8em;
+  margin-bottom: 0rem;
+}
+
+.reply {
+  text-align: right;
+  font-size:0.8rem;
+}
+
+
 
 /* Easy Digital Downloads Support */
 /* Hide the published date, author, category, and author box on downloads archive page */

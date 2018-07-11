@@ -41,17 +41,17 @@ if ( post_password_required() ) {
 			}
 			?>
 		</h2>
-
-		<ol class="comment-list">
+		
+		<ul class="comment-list">
 			<?php
 				wp_list_comments( array(
-					'avatar_size' => 100,
-					'style'       => 'ol',
+					'avatar_size' => 20,
+					'style'       => 'ul',
 					'short_ping'  => true,
 					'reply_text'  => __( 'Reply', 'eli' ),
 				) );
 			?>
-		</ol>
+		</ul>
 
 		 <?php 
 		 the_comments_pagination( array(
