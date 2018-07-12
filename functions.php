@@ -208,9 +208,9 @@ function eli_page_metabox( $post ) {
 
 	wp_nonce_field( 'eli_page_settings', 'eli_page_settings_nonce' );
 
-    $hide_page_navbar = isset( $_POST['eli_hide_page_navbar'] ) ? (int) $_POST['eli_hide_page_navbar'] : '';
-    $hide_page_title = isset( $_POST['eli_hide_page_title'] ) ? (int) $_POST['eli_hide_page_title'] : '';
-    $hide_page_footer = isset( $_POST['eli_hide_page_footer'] ) ? (int) $_POST['eli_hide_page_footer'] : '';
+    $hide_page_navbar = isset( $_POST['eli_hide_page_navbar'] ) ? (int) $_POST['eli_hide_page_navbar'] : get_post_meta( $post->ID, 'eli_hide_page_navbar', true );
+    $hide_page_title = isset( $_POST['eli_hide_page_title'] ) ? (int) $_POST['eli_hide_page_title'] : get_post_meta( $post->ID, 'eli_hide_page_title', true );
+    $hide_page_footer = isset( $_POST['eli_hide_page_footer'] ) ? (int) $_POST['eli_hide_page_footer'] : get_post_meta( $post->ID, 'eli_hide_page_footer', true );
 
 
 	?>
