@@ -80,11 +80,15 @@ function eli_scripts() {
 	// Custom JQuery file
 	// wp_enqueue_script( 'eli_jquery', get_theme_file_uri( '/assets/js/eli-jquery.js'), array( 'jquery' ) );
 
+	//Script file for floating buttons
+	wp_enqueue_script( 'eli_floatingbuttons', get_theme_file_uri( '/assets/js/eli-floatingbuttons.js'), array( 'jquery' ) );
+
 	wp_enqueue_style( 'font-awesome', get_theme_file_uri( '/includes/font-awesome/css/font-awesome.min.css' ) );
 
 	do_action("eli_enqueue_script_extender");
 
 }
+
 add_action( 'wp_enqueue_scripts', 'eli_scripts' );
 
 /**
