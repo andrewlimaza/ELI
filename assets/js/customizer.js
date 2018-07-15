@@ -8,9 +8,6 @@
 
 ( function( $ ) {
 
-
-
-
 	wp.customize( 'eli_footer_copyright_text', function( value ) {
 
 		value.bind( function( to ) {
@@ -204,6 +201,16 @@
 		value.bind( function( newval ) {
 			$('.footer').css('color', newval );
 		} );
+	} );
+
+	wp.customize( 'eli_back_to_top', function( value ) {
+			value.bind( function( to ) {
+				if ( to ) {
+					$( '.button-to-top' ).css('opacity', 1 );
+				} else {
+					$( '.button-to-top' ).css('opacity', 0 );
+				}
+			} );
 	} );
 
 } )( jQuery );

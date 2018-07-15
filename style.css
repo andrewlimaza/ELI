@@ -133,12 +133,8 @@ a:hover{
   border: 0;
   border-radius: 2px;
   box-shadow: none;
- /* background: #145474;
- 
- color: #fff; */
- line-height: 20px;
+  line-height: 20px;
   font-size: 26px;
-  
   text-align: center;
   cursor: pointer;
   pointer-events: none;

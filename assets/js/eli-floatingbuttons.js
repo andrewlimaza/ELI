@@ -15,7 +15,6 @@ jQuery(document).ready(function($){
             } else {
                 $('.button-to-top').addClass('button-to-top-visible');
               }
-          
             },250);
       });
 

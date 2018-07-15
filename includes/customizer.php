@@ -497,12 +497,11 @@ function eli_customizer_register( $wp_customize ) {
          )
     );
 
-    $wp_customize->add_setting( 'eli_back_to_top', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+    $wp_customize->add_setting( 'eli_back_to_top', 
          array(
-            'default'    =>  false, //Default setting/value to save
-            'type'       => 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' => 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport'  => 'postMessage' //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+            'default'    =>  true,
+            'type'       => 'theme_mod',
+            'transport'  => 'refresh' //Using refresh to ensure HTML element is loaded if the setting was false. 
          )
       );
 
@@ -515,6 +514,7 @@ function eli_customizer_register( $wp_customize ) {
             'priority' => '130'
         )
     );
+    
 
 
 }
