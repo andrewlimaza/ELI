@@ -425,13 +425,18 @@ table tbody + tbody {
   right: 15px;
   bottom: 15px;
   z-index: 1;
-  background: #000000;
-  border-radius: 2px;
+  background: #CCCCCC;
+  border-radius: 100%;
   text-decoration: none;
-  color: #ffffff;
+  color: #FFFFFF;
   text-align: center;
 }
 
+
 #topbutton:after {
   content: "\2191";
+}
+
+#topbutton:hover {
+  background-color: #E5E5E5;
 }
