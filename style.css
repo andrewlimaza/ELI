@@ -414,3 +414,24 @@ table tbody + tbody {
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+/* Adding Back to Top Button */
+#topbutton {
+  position: fixed;
+  display: none;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  right: 15px;
+  bottom: 15px;
+  z-index: 1;
+  background: #000000;
+  border-radius: 2px;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+}
+
+#topbutton:after {
+  content: "\2191";
+}
