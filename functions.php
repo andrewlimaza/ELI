@@ -493,7 +493,7 @@ add_filter( 'get_the_excerpt', 'manual_excerpt_more' );
  * Enqueue button javascript script.
  */
 function themeslug_add_button_script() {
-  wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . 'assets/js/back-to-top.js', array( 'jquery' ) );
+  wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/assets/js/back-to-top.js', array( 'jquery' ) );
 }
 add_action( 'wp_enqueue_scripts', 'themeslug_add_button_script' );
 
