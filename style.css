@@ -121,6 +121,38 @@ a:hover{
     color:#333;
     text-decoration:none; 
 }
+
+/** Back to top button **/
+.button-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(255,255,255,0.5);
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  width: 60px;
+  height: 60px;
+  padding-bottom: 10px;
+  border: 0;
+  border-radius: 50%;
+  font-size: 40px;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+
+.button-to-top-visible {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.button-to-top i {
+  box-shadow: 
+}
+
 /* Sticky Header Navigation Top */
 .sticky-top{ background:rgba( 255, 255, 255, 0.7 ); }
 

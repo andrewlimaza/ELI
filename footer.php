@@ -6,6 +6,19 @@
  */
 ?>
 
+<div>
+	<?php
+		
+		//$back_to_top = get_theme_mod( 'eli_back_to_top' ) ;
+		//if( !empty($back_to_top) )
+	    //		$back_to_top = apply_filters('eli_back_to_top', __('<i class="fa fa-chevron-up"></i> Back to Top', 'eli') );					
+		if( !empty(get_theme_mod( 'eli_back_to_top' )) )
+			echo '<a href="#" class="button-to-top"><i class="fa fa-chevron-up"></i></a>';
+	?>
+</div>
+
+
+
 <?php
 	do_action( 'eli_before_body_tag' );
 

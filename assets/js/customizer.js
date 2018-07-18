@@ -8,9 +8,6 @@
 
 ( function( $ ) {
 
-
-
-
 	wp.customize( 'eli_footer_copyright_text', function( value ) {
 
 		value.bind( function( to ) {
@@ -205,5 +202,7 @@
 			$('.footer').css('color', newval );
 		} );
 	} );
+
+	
 
 } )( jQuery );
