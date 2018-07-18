@@ -159,6 +159,19 @@ input.pmpro_error{ background:#F2DEDE !important; }
     #eli-view-orders, #eli-view-account { display:block; }
 }
 
+h2.widget-title {
+    text-transform: lowercase;
+    color: #E5E5E5;
+}
+
+.widget-area ul li a {
+    color: #4D4D4D;  
+}
+
+.widget-area ul li a:hover {
+    color: #B3B3B3;  
+}
+
 /* Change WC Acct Page Column Widths */
 @media only screen and (min-width: 769px) {
   .woocommerce-account .woocommerce-MyAccount-navigation {

@@ -486,3 +486,5 @@ function manual_excerpt_more( $excerpt ) {
 	return $excerpt . $excerpt_more;
 }
 add_filter( 'get_the_excerpt', 'manual_excerpt_more' );
+
+
