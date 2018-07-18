@@ -122,6 +122,15 @@ function eli_customizer_register( $wp_customize ) {
          )
     );
 
+    //Back to top floating button
+    $wp_customize->add_setting( 'eli_back_to_top', 
+        array(
+        'default'    =>  true,
+        'type'       => 'theme_mod',
+        'transport'  => 'refresh' //Using refresh to ensure HTML element is loaded if the setting was false. 
+        )
+    );
+
     $wp_customize->add_control( new WP_Customize_Control( //Instantiate the color control class
          $wp_customize, //Pass the $wp_customize object (required)
          'eli_show_social_media', //Set a unique ID for the control
@@ -132,6 +141,15 @@ function eli_customizer_register( $wp_customize ) {
             'section'    => 'eli_footer',
          )
     ) );
+
+    $wp_customize->add_control( 'eli_back_to_top', 
+        array(
+            'type' => 'checkbox',
+            'label' => 'Show Back to Top Link', 
+            'section' => 'eli_footer',
+            'settings' => 'eli_back_to_top'
+        )
+   );
 
 	// Control for text itself.
    	$wp_customize->add_control( new WP_Customize_Control ( //Instantiate the color control class
@@ -482,39 +500,7 @@ function eli_customizer_register( $wp_customize ) {
             'settings'   => 'eli_footer_color',
         ) )
     );
-
-     /**
-     *
-     * START OF FLOATING BUTTONS
-     *
-     */
-    $wp_customize->add_section( 'eli_floating_buttons',
-         array(
-            'title'       => __( 'Floating Buttons', 'eli' ), //Visible title of section
-            'priority'    => 31, //Determines what order this appears in
-            'capability'  => 'edit_theme_options', //Capability needed to tweak
-            'description' => __( 'Show floating buttons.' , 'eli' ), //Descriptive tooltip
-         )
-    );
-
-    $wp_customize->add_setting( 'eli_back_to_top', 
-         array(
-            'default'    =>  true,
-            'type'       => 'theme_mod',
-            'transport'  => 'refresh' //Using refresh to ensure HTML element is loaded if the setting was false. 
-         )
-      );
-
-    $wp_customize->add_control( 'eli_back_to_top', 
-        array(
-            'type' => 'checkbox',
-            'label' => 'Show Back to Top Link', 
-            'section' => 'eli_floating_buttons',
-            'settings' => 'eli_back_to_top',
-            'priority' => '130'
-        )
-    );
-    
+   
 
 
 }

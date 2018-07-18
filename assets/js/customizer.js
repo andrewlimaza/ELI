@@ -203,14 +203,6 @@
 		} );
 	} );
 
-	wp.customize( 'eli_back_to_top', function( value ) {
-			value.bind( function( to ) {
-				if ( to ) {
-					$( '.button-to-top' ).css('opacity', 1 );
-				} else {
-					$( '.button-to-top' ).css('opacity', 0 );
-				}
-			} );
-	} );
+	
 
 } )( jQuery );
