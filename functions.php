@@ -486,21 +486,3 @@ function manual_excerpt_more( $excerpt ) {
 	return $excerpt . $excerpt_more;
 }
 add_filter( 'get_the_excerpt', 'manual_excerpt_more' );
-
-//Adding back to top button
-
-/**
- * Enqueue button javascript script.
- */
-function themeslug_add_button_script() {
-  wp_enqueue_script( 'custom-script', get_stylesheet_directory_uri() . '/assets/js/back-to-top.js', array( 'jquery' ) );
-}
-add_action( 'wp_enqueue_scripts', 'themeslug_add_button_script' );
-
-/**
- * Add button HTML to the footer section.
- */
-function themeslug_add_scroll_button() {
-  echo '<a href="#" id="topbutton"></a>';
-}
-add_action( 'wp_footer', 'themeslug_add_scroll_button' );
