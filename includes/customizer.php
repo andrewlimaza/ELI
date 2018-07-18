@@ -125,7 +125,7 @@ function eli_customizer_register( $wp_customize ) {
     //Back to top floating button
     $wp_customize->add_setting( 'eli_back_to_top', 
         array(
-        'default'    =>  true,
+        'default'    =>  false,
         'type'       => 'theme_mod',
         'transport'  => 'refresh' //Using refresh to ensure HTML element is loaded if the setting was false. 
         )
