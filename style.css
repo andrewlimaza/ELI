@@ -127,14 +127,16 @@ a:hover{
   justify-content: center;
   align-items: center;
   position: fixed;
-  background-color: rgba(255,255,255,0.5);
-  bottom: 20px;
+  background-color: rgba(0,0,0,0.4);
+  bottom: 100px;
   right: 0px;
-  z-index: 100;
+  z-index: 99999;
   width: 40px;
   height: 40px;
   padding-bottom: 5px;
-  border: 1px solid #ccc;
+  color:white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
   font-size: 20px;
   cursor: pointer;
   pointer-events: none;
@@ -145,10 +147,7 @@ a:hover{
 .button-to-top-visible {
   pointer-events: auto;
   opacity: 1;
-}
-
-.button-to-top i {
-  box-shadow: 
+  animation: fadeInRight 1s 1 cubic-bezier(.77,0,.175,1);
 }
 
 /* Sticky Header Navigation Top */
