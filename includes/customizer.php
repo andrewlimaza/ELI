@@ -340,6 +340,37 @@ function eli_customizer_register( $wp_customize ) {
     );
 
     /* Setup the settings, and sanitizers */
+    $wp_customize->add_setting( 'eli_nav_topbar_bg_color',
+        array(
+            'default' => '#fff',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'  => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_setting( 'eli_nav_topbar_a_link_color',
+        array(
+            'default' => '#000',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'  => 'postMessage',
+        )
+    );
+
+    $wp_customize->add_setting( 'eli_nav_topbar_hover_a_link_color',
+        array(
+            'default' => '#000',
+            'sanitize_callback' => 'sanitize_hex_color',
+        )
+    );
+
+    $wp_customize->add_setting( 'eli_nav_topbar_active_a_link_color',
+        array(
+            'default' => '#000',
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport'  => 'postMessage',
+        )
+    );
+
     $wp_customize->add_setting( 'eli_nav_bg_color',
         array(
             'default' => '#fff',
@@ -411,6 +442,46 @@ function eli_customizer_register( $wp_customize ) {
     );
 
     /* Setup the controls */
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+        $wp_customize,
+        'eli_nav_topbar_bg_color',
+        array(
+            'label'      => __( 'Top Bar Navigation Background', 'eli' ),
+            'section'    => 'eli_site_colors',
+            'settings'   => 'eli_nav_topbar_bg_color',
+        ) )
+    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+        $wp_customize,
+        'eli_nav_topbar_a_link_color',
+        array(
+            'label'      => __( 'Top Bar Navigation Link Color', 'eli' ),
+            'section'    => 'eli_site_colors',
+            'settings'   => 'eli_nav_topbar_a_link_color',
+        ) )
+    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+        $wp_customize,
+        'eli_nav_topbar_hover_a_link_color',
+        array(
+            'label'      => __( 'Top Bar Navigation Link Hover Color', 'eli' ),
+            'section'    => 'eli_site_colors',
+            'settings'   => 'eli_nav_topbar_hover_a_link_color',
+        ) )
+    );
+
+    $wp_customize->add_control( new WP_Customize_Color_Control(
+        $wp_customize,
+        'eli_nav_topbar_active_a_link_color',
+        array(
+            'label'      => __( 'Top Bar Navigation Active Link Color', 'eli' ),
+            'section'    => 'eli_site_colors',
+            'settings'   => 'eli_nav_topbar_active_a_link_color',
+        ) )
+    );
+
     $wp_customize->add_control( new WP_Customize_Color_Control(
         $wp_customize,
         'eli_nav_bg_color',

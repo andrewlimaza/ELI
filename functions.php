@@ -38,6 +38,7 @@ function eli_setup() {
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
 		'top'    => __( 'Top Menu', 'eli' ),
+		'top-bar' => __( 'Top Bar Menu', 'eli' ),
 		'footer' => __( 'Footer Menu', 'eli' ),
 	) );
 
@@ -428,6 +429,26 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'woocommerce_header_add_to_cart
 function eli_customizer_inline_head_generator(){
 	$output_css = "";
 
+	$nav_topbar_bg_color = get_theme_mod('eli_nav_topbar_bg_color', false);
+	if($nav_topbar_bg_color !== false){
+		$output_css .= "#top-bar-menu { background-color: " . $nav_topbar_bg_color . "; }";
+	}
+
+	$nav_topbar_link_color = get_theme_mod('eli_nav_topbar_a_link_color', false);
+	if($nav_topbar_link_color !== false){
+		$output_css .= "#top-bar-menu li:not(.active) a { color: " . $nav_topbar_link_color . "; }";
+	}
+
+	$nav_topbar_link_hover_color = get_theme_mod('eli_nav_topbar_hover_a_link_color', false);
+	if($nav_topbar_link_hover_color !== false){
+		$output_css .= "#top-bar-menu li a:hover { color: " . $nav_topbar_link_hover_color . "; }";
+	}
+
+	$nav_topbar_active_link_color = get_theme_mod('eli_nav_topbar_active_a_link_color', false);
+	if($nav_topbar_active_link_color !== false){
+		$output_css .= "#top-bar-menu li.active a { color: " . $nav_topbar_active_link_color . "; }";
+	}
+
 	$nav_bg_color = get_theme_mod('eli_nav_bg_color', false);
 	if($nav_bg_color !== false){
 		$output_css .= "#eli-top-navbar,.dropdown-menu { background-color: " . $nav_bg_color . "; }";
@@ -477,7 +498,7 @@ function eli_customizer_inline_head_generator(){
 }
 add_action( "eli_enqueue_script_extender", "eli_customizer_inline_head_generator" );
 
-function manual_excerpt_more( $excerpt ) {
+function eli_manual_excerpt_more( $excerpt ) {
 	$excerpt_more = '';
 	if( has_excerpt() ) {
     	$excerpt_more = '<br/><a href="' . get_permalink() . '" rel="nofollow" class="more-link">' .
@@ -489,6 +510,6 @@ function manual_excerpt_more( $excerpt ) {
 
 	return $excerpt . $excerpt_more;
 }
-add_filter( 'get_the_excerpt', 'manual_excerpt_more' );
+add_filter( 'get_the_excerpt', 'eli_manual_excerpt_more' );
 
 
