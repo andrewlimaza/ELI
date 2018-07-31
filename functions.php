@@ -181,14 +181,23 @@ endif;
  * @param $post Object.
  */
 function eli_get_entry_meta(){
-	?>
-	<div class="eli-post-meta entry-meta">
-		<i class="fa fa-user"></i> <?php echo get_the_author_posts_link(); ?>
-		<i class="fa fa-tags"></i> <?php echo get_the_category_list( ', ' ); ?>
-		<i class="fa fa-comments"></i><a href="<?php echo get_comments_link(); ?>"> <?php echo comments_number( __( 'Leave a Comment', 'eli' ) ); ?></a>
-		<i class="fa fa-calendar"></i> <?php echo get_the_date(); ?>
-	</div>
-	<?php
+
+	global $post;
+
+	$show_entry_meta = apply_filters( 'eli_show_post_meta', true, $post );
+
+	if ( $show_entry_meta ) {
+		?>
+		<div class="eli-post-meta entry-meta">
+			<i id="eli-post-meta-author" class="fa fa-user"></i> <?php echo get_the_author_posts_link(); ?>
+			<i id="eli-post-meta-tags" class="fa fa-tags"></i> <?php echo get_the_category_list( ', ' ); ?>
+			<i id="eli-post-meta-comments" class="fa fa-comments"></i><a href="<?php echo get_comments_link(); ?>"> <?php echo comments_number( __( 'Leave a Comment', 'eli' ) ); ?></a>
+			<i id="eli-post-meta-date" class="fa fa-calendar"></i> <?php echo get_the_date(); ?>
+
+			<?php do_action( 'eli_add_post_meta', $post ); ?>
+		</div>
+		<?php
+	}
 }
 
 
