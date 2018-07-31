@@ -47,6 +47,8 @@
       //assume single page and get content
       $hide_navbar = get_post_meta( $post->ID, 'eli_hide_page_navbar', true );
 
+      $hide_navbar = apply_filters( 'eli_hide_navbar_filter', $hide_navbar, $post );
+
       if( '1' != $hide_navbar ) {
         get_template_part( 'template-parts/navigation/navigation', 'top' );
       }
