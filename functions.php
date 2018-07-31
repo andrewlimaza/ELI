@@ -460,7 +460,7 @@ function eli_customizer_inline_head_generator(){
 
 	$nav_bg_color = get_theme_mod('eli_nav_bg_color', false);
 	if($nav_bg_color !== false){
-		$output_css .= "#eli-top-navbar,.dropdown-menu { background-color: " . $nav_bg_color . "; }";
+		$output_css .= "#eli-top-navbar,.dropdown-menu, .dropdown-menu a:hover { background-color: " . $nav_bg_color . "; }";
 	}
 
 	$nav_link_color = get_theme_mod('eli_nav_a_link_color', false);
@@ -470,12 +470,12 @@ function eli_customizer_inline_head_generator(){
 
 	$nav_link_hover_color = get_theme_mod('eli_nav_hover_a_link_color', false);
 	if($nav_link_hover_color !== false){
-		$output_css .= "#eli-top-navbar .navbar-nav li .nav-link:hover { color: " . $nav_link_hover_color . "; }";
+		$output_css .= "#eli-top-navbar .navbar-nav li .nav-link:hover, .dropdown-menu .active a:hover { color: " . $nav_link_hover_color . "; }";
 	}
 
 	$nav_active_link_color = get_theme_mod('eli_nav_active_a_link_color', false);
 	if($nav_active_link_color !== false){
-		$output_css .= "#eli-top-navbar .navbar-nav .active .nav-link { color: " . $nav_active_link_color . "; }";
+		$output_css .= "#eli-top-navbar .navbar-nav .active .nav-link, .dropdown-menu .active a { color: " . $nav_active_link_color . "; }";
 	}
 
 	$link_color = get_theme_mod('eli_a_link_color', false);
