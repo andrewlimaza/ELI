@@ -189,6 +189,7 @@ input.pmpro_error{ background:#F2DEDE !important; }
     margin-left:0;
     padding-left:0;
 }
+#secondary h2.widget-title{ border-top: 1px solid #ccc; }
 
 #eli-view-account{ float:right; }
 
