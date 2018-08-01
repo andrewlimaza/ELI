@@ -8,9 +8,6 @@
 
 ( function( $ ) {
 
-
-
-
 	wp.customize( 'eli_footer_copyright_text', function( value ) {
 
 		value.bind( function( to ) {
@@ -162,6 +159,25 @@
 
  	} );
 
+
+ 	wp.customize( 'eli_nav_topbar_bg_color', function( value ) {
+		value.bind( function( newval ) {
+			$( '#top-bar-menu' ).css( 'background-color', newval );
+		} );
+	} );
+
+	wp.customize( 'eli_nav_topbar_a_link_color', function( value ) {
+		value.bind( function( newval ) {
+			$('#top-bar-menu li:not(.active) a').css('color', newval);
+		} );
+	} );
+
+	wp.customize( 'eli_nav_topbar_active_a_link_color', function( value ) {
+		value.bind( function( newval ) {
+			$('#top-bar-menu .active a').css('color', newval);
+		} );
+	} );
+
  	wp.customize( 'eli_nav_bg_color', function( value ) {
 		value.bind( function( newval ) {
 			$( '#eli-top-navbar' ).css( 'background-color', newval );
@@ -205,5 +221,7 @@
 			$('.footer').css('color', newval );
 		} );
 	} );
+
+	
 
 } )( jQuery );

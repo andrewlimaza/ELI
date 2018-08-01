@@ -39,10 +39,12 @@
        wp_nav_menu(
 			array(
 				'theme_location'  => 'top',
+				'depth'			  => 2,
+				'container'		  => 'div',
 				'container_class' => 'collapse navbar-collapse',
 				'container_id'    => 'navbarNavDropdown',
 				'menu_class'      => 'navbar-nav ml-auto',
-				'fallback_cb'     => '',
+				'fallback_cb'     => 'Eli_WP_Bootstrap_Navwalker::fallback',
 				'menu_id'         => 'top-menu',
 				'walker'          => new Eli_WP_Bootstrap_Navwalker(),
 			)

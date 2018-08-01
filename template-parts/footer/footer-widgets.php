@@ -42,15 +42,14 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
 	      			?>
 	      		</div>
 
-	      		<div class="container" id="footer-menu-container">
 	      		<?php
 		      		if( has_nav_menu( 'footer' ) ) :
 
 		       			wp_nav_menu(
 							array(
 								'theme_location'  => 'footer',
-								'container_class' => '',
-								'container_id'    => '',
+								'container_class' => 'container',
+								'container_id'    => 'footer-menu-container',
 								'menu_class'      => 'list-inline',
 								'fallback_cb'     => '',
 								'menu_id'         => 'footer-menu',
@@ -60,7 +59,6 @@ if( is_active_sidebar( 'footer-1' ) || is_active_sidebar( 'footer-2' ) || is_act
 
 	       			endif;
 	      		?>
-	      	</div>
         		<p><small id="eli-copyright-text"><?php echo get_theme_mod( 'eli_footer_copyright_text', '&copy; ' . date("Y") . ' ' . get_bloginfo('name') ); ?></small></p>
      		</div>
     	</div>

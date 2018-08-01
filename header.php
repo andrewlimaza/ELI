@@ -31,7 +31,11 @@
    <?php  wp_head(); ?>
   </head>
 
+
+
   <body <?php body_class(); ?>>
+
+    <?php get_template_part( 'template-parts/header/header', 'top' ); ?>
     
     <?php do_action( 'eli_opening_body_tag' ); ?>
 
@@ -42,6 +46,8 @@
       }else{
       //assume single page and get content
       $hide_navbar = get_post_meta( $post->ID, 'eli_hide_page_navbar', true );
+
+      $hide_navbar = apply_filters( 'eli_hide_navbar_filter', $hide_navbar, $post );
 
       if( '1' != $hide_navbar ) {
         get_template_part( 'template-parts/navigation/navigation', 'top' );
