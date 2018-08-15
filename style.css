@@ -182,6 +182,32 @@ input.pmpro_error{ background:#F2DEDE !important; }
 .pmpro_checkout-field select{ font-size:18px; }
 
 /**
+ * PMPro Styling
+ */
+ #ExpirationMonth, #ExpirationYear{
+    display:inline;
+    max-width:100px;
+}
+
+#ExpirationYear{ margin-left:10px; }
+
+.pmpro_btn-submit-checkout{ max-width:225px; }
+.pmpro_submit input{ border:none; display:inherit; }
+.hidden{ display:none; }
+
+#pmpro_pricing_fields{
+    border: solid 1px #ccc;
+    padding: 2%;
+    border-radius:5px;
+}
+
+#pmpro_pricing_fields h3{ margin: 0 !important; }
+
+#pmpro_license{ border-radius:5px; }
+
+#other_discount_code_a{ text-decoration:underline; }
+
+/**
  * WooCommerce Styling
  */
 
@@ -367,21 +393,7 @@ table tbody + tbody {
   margin-left:0;
   padding:0;
 }
-/**
- * PMPro Styling
- */
- #ExpirationMonth, #ExpirationYear{
-    display:inline;
-    max-width:100px;
-}
 
-#ExpirationYear{ margin-left:10px; }
-
-/**
- * PMPRO STYLING
- */
- .pmpro_btn-submit-checkout{ max-width:175px; }
-.hidden{ display:none; }
 
 
 /**

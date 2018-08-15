@@ -25,6 +25,13 @@ require_once( ELI_DIR . '/includes/bootstrap-wp-navwalker.php' );
 require_once( ELI_DIR . '/includes/customizer.php' );
 
 /**
+ * Include custom code for Paid Memberships Pro.
+ */
+if ( defined( 'PMPRO_VERSION' ) ) {
+	require_once( ELI_DIR . '/includes/paid-memberships-pro.php' );
+}
+
+/**
  * License checker.
  */
 // require_once( ELI_DIR . '/includes/updates/license.php' );
