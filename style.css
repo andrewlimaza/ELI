@@ -173,6 +173,14 @@ a:hover{
 
 input.pmpro_error{ background:#F2DEDE !important; }
 
+.pmpro_btn-submit-checkout { font-size: 12px; }
+
+.pmpro_checkout-field #discount_code_button { width: 100px;}
+
+#discount_code, #discount_code_button { display: inline; }
+
+.pmpro_checkout-field select{ font-size:18px; }
+
 /**
  * WooCommerce Styling
  */
