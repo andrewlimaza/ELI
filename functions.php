@@ -25,6 +25,13 @@ require_once( ELI_DIR . '/includes/bootstrap-wp-navwalker.php' );
 require_once( ELI_DIR . '/includes/customizer.php' );
 
 /**
+ * Include custom code for Paid Memberships Pro.
+ */
+if ( defined( 'PMPRO_VERSION' ) ) {
+	require_once( ELI_DIR . '/includes/paid-memberships-pro.php' );
+}
+
+/**
  * License checker.
  */
 // require_once( ELI_DIR . '/includes/updates/license.php' );
@@ -49,6 +56,12 @@ function eli_setup() {
 	add_theme_support( 'custom-logo' );
 	add_theme_support( 'automatic-feed-links' );
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'gutenberg' );
+	add_theme_support( 'align-wide');
+	add_theme_support( 'wp-block-styles' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'dark-editor-style' );
+	add_theme_support( 'responsive-embeds' );
 
 	//let's support different languages.
 	load_theme_textdomain( 'eli', ELI_DIR . '/languages' );
@@ -520,5 +533,3 @@ function eli_manual_excerpt_more( $excerpt ) {
 	return $excerpt . $excerpt_more;
 }
 add_filter( 'get_the_excerpt', 'eli_manual_excerpt_more' );
-
-
