@@ -115,10 +115,13 @@ blockquote p {
 
 #footer-menu li.active a{ color:rgba( 0,0,0,0.9); }
 
-a{ color:#777; }
+/** Links on posts and pages style **/
+a{ color:#777;
+	 text-decoration: underline;
+}
 a:hover{ 
     color:#333;
-    text-decoration:none; 
+    text-decoration:underline; 
 }
 
 /** Back to top button **/
