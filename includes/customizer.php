@@ -20,22 +20,40 @@ function eli_customizer_register( $wp_customize ) {
      */
     
 
-$wp_customize->add_section('section_fonts', array(
-	'title'		=> esc_html__('Fonts', 'eli'),
-	'priority'	=> 0,
-));
+    /** Google Fonts Start */
+    $wp_customize->add_section('section_fonts', array(
+        'title'		=> esc_html__('Fonts', 'eli'),
+        'priority'	=> 0,
+    ));
 
+    $wp_customize->add_setting( 'eli_google_font_heading', array(
+        'default'           => 'Roboto',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
     
-    $wp_customize->add_setting( 'main_google_font_list', array(
-        'default'           => '',
+    $wp_customize->add_setting( 'eli_google_font_body', array(
+        'default'           => 'Open Sans',
         'sanitize_callback' => 'sanitize_text_field',
 	));
 	
-    $wp_customize->add_control( new Google_Font_Dropdown_Custom_Control( $wp_customize, 'main_google_font_list', array(
-        'label'      => 'Select a Font',
-        'section'    => 'section_fonts',
-        'settings'   => 'main_google_font_list',
+    $wp_customize->add_control( new Google_Font_Dropdown_Custom_Control( 
+        $wp_customize, 
+        'eli_google_font_heading', 
+        array(
+            'label'      => 'Heading Font ',
+            'section'    => 'section_fonts',
+            'settings'   => 'eli_google_font_heading',
     )));
+
+    $wp_customize->add_control( new Google_Font_Dropdown_Custom_Control( 
+        $wp_customize, 
+        'eli_google_font_body', 
+        array(
+            'label'      => 'Body Font ',
+            'section'    => 'section_fonts',
+            'settings'   => 'eli_google_font_body',
+    )));
+    /** Google Fonts End */
 
      $wp_customize->add_section( 'eli_theme_scripts',
          array(
@@ -601,8 +619,8 @@ function eli_theme_css()
 {
     ?>
          <style type="text/css">
-             h1,h2,h3,h3,h4,h5,h6,body { font-family: <?php echo get_theme_mod('main_google_font_list', 'sans-serif'); ?>; 
-             }
+             h1,h2,h3,h3,h4,h5,h6{ font-family: <?php echo get_theme_mod('eli_google_font_heading', 'sans-serif'); ?>; }
+             body { font-family: <?php echo get_theme_mod( 'eli_google_font_body', 'sans-serif' ); ?>; }
          </style>
     <?php
 }

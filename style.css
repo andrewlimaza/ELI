@@ -116,13 +116,13 @@ blockquote p {
 #footer-menu li.active a{ color:rgba( 0,0,0,0.9); }
 
 /** Links on posts and pages style **/
-a{ color:#777;
-	 text-decoration: underline;
-}
-a:hover{ 
-    color:#333;
-    text-decoration:underline; 
-}
+a{color:#777;}
+
+a:hover{color:#333;}
+
+.entry-content a{ text-decoration:underline;}
+
+.widget-area a{ text-decoration:underline; } 
 
 /** Back to top button **/
 .button-to-top {
