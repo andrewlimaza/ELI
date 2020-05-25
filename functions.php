@@ -86,7 +86,7 @@ function eli_scripts() {
 
 	wp_enqueue_style( 'eli-roboto', 'https://fonts.googleapis.com/css?family=Roboto:300italic,400italic,600italic,700italic,800italic,200,400,300,600,700,800' );
 
-
+	wp_enqueue_style('eli-google-fonts', eli_fonts_url(), array(), null);
 
 	// Theme dependent js.
 	wp_enqueue_script( 'bootstrap', get_theme_file_uri( '/assets/js/bootstrap.js' ), array( 'jquery' ) );
@@ -532,4 +532,31 @@ function eli_manual_excerpt_more( $excerpt ) {
 
 	return $excerpt . $excerpt_more;
 }
+/********* Google Fonts URL function  ***********/
+if ( ! function_exists( 'eli_fonts_url' ) ){
+	function eli_fonts_url() {
+	    $fonts_url = '';
+	    $content_font = get_theme_mod('main_google_font_list', '');
+	    
+
+
+	    if ( 'off' !== $content_font ) {
+	        $font_families = array();
+
+	        if ( 'off' !== $content_font ) {
+	            $font_families[] = $content_font;
+	        }
+
+	        $query_args = array(
+	            'family' => urlencode( implode( '|', array_unique($font_families) ) ),
+	        );
+
+	        $fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	    }
+
+	    return esc_url_raw( $fonts_url );
+	}
+}
+
 add_filter( 'get_the_excerpt', 'eli_manual_excerpt_more' );
+

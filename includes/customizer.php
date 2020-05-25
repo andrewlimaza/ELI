@@ -10,13 +10,33 @@
  *
  * @param object $wp_customize The customize object.
  */
-function eli_customizer_register( $wp_customize ) {
 
+function eli_customizer_register( $wp_customize ) {
+    require_once( ELI_DIR . '/includes/custom_controls.php' );
     /**
      *
      * Custom scripts.
      *
      */
+    
+
+$wp_customize->add_section('section_fonts', array(
+	'title'		=> esc_html__('Fonts', 'eli'),
+	'priority'	=> 0,
+));
+
+    
+    $wp_customize->add_setting( 'main_google_font_list', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_text_field',
+	));
+	
+    $wp_customize->add_control( new Google_Font_Dropdown_Custom_Control( $wp_customize, 'main_google_font_list', array(
+        'label'      => 'Select a Font',
+        'section'    => 'section_fonts',
+        'settings'   => 'main_google_font_list',
+    )));
+
      $wp_customize->add_section( 'eli_theme_scripts',
          array(
             'title'       => __( 'Additional Scripts', 'eli' ), //Visible title of section
@@ -576,3 +596,14 @@ function eli_customizer_register( $wp_customize ) {
 
 }
 add_action( 'customize_register', 'eli_customizer_register' );
+
+function eli_theme_css()
+{
+    ?>
+         <style type="text/css">
+             h1,h2,h3,h3,h4,h5,h6,body { font-family: <?php echo get_theme_mod('main_google_font_list', 'sans-serif'); ?>; 
+             }
+         </style>
+    <?php
+}
+add_action( 'wp_head', 'eli_theme_css');
